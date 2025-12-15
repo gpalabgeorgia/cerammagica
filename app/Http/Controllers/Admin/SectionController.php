@@ -18,13 +18,13 @@ class SectionController extends Controller
     public function updateSectionStatus(Request $request) {
         if($request->ajax()) {
             $data = $request->all();
-            if($data['status']='Активный') {
+            if($data['status']=='Активный') {
                 $status = 0;
             }else {
                 $status = 1;
             }
             Section::where('id', $data['section_id'])->update(['status'=>$status]);
-            return response()->update(['status'=>$status, 'section_id'=>$data['section_id']]);
+            return response()->json(['status'=>$status, 'section_id'=>$data['section_id']]);
         }
     }
 }

@@ -29,9 +29,27 @@ $(document).ready(function() {
             data: {status:status,section_id:section_id},
             success: function(resp) {
                 if(resp['status']==0) {
-                    $('#section_id-'+section_id).html('<a class="updateSectionStatus" href="javascript:void(0);">Неактивный</a>');
+                    $('#section-'+section_id).html('<a class="updateSectionStatus" href="javascript:void(0)">Неактивный</a>');
                 }else if(resp['status']==1) {
-                    $('#section_id-'+section_id).html('<a class="updateSectionStatus" href="javascript:void(0);">Активный</a>');
+                    $('#section-'+section_id).html('<a class="updateSectionStatus" href="javascript:void(0)">Активный</a>');
+                }
+            },error: function() {
+                alert('Произошла ошибка!');
+            }
+        });
+    });
+    $(".updateCategoryStatus").click(function() {
+        let status = $(this).text();
+        let category_id = $(this).attr("category_id");
+        $.ajax({
+            type: 'post',
+            url: '/admin/update-category-status',
+            data: {status:status,category_id:category_id},
+            success: function(resp) {
+                if(resp['status']==0) {
+                    $('#category-'+category_id).html('<a class="updateCategoryStatus" href="javascript:void(0)">Неактивный</a>');
+                }else if(resp['status']==1) {
+                    $('#category-'+category_id).html('<a class="updateCategoryStatus" href="javascript:void(0)">Активный</a>');
                 }
             },error: function() {
                 alert('Произошла ошибка!');
