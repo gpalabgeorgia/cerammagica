@@ -56,4 +56,19 @@ $(document).ready(function() {
             }
         });
     });
+
+    // Append Categories Level
+    $('#section_id').change(function() {
+        let section_id = $(this).val();
+        $.ajax({
+            type: 'post',
+            url: '/admin/append-categories-level',
+            data: {section_id:section_id},
+            success:function(resp) {
+                $('#appendCategoriesLevel').html(resp);
+            },error: function() {
+                alert('Произошла ошибка!');
+            }
+        });
+    });
 });

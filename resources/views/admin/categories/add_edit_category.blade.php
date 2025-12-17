@@ -48,11 +48,8 @@
                                     <label class="category_name">Название категории</label>
                                     <input type="text" class="form-control" id="category_name" name="category_name" placeholder="Введите название категории">
                                 </div>
-                                <div class="form-group">
-                                    <label>Выберите уровень категории</label>
-                                    <select name="parent_id" id="parent_id" class="form-control select2" style="width: 100%;">
-                                        <option value="0">Главная категория</option>
-                                    </select>
+                                <div id="appendCategoriesLevel">
+                                    @include('admin.categories.append_categories_level')
                                 </div>
                             </div>
                             <div class="col-md-6">
