@@ -66,7 +66,11 @@
                                                     <a class="updateCategoryStatus" id="category-{{ $category->id }}" category_id="{{ $category->id }}" href="javascript:void(0);">Неактивный</a>
                                                 @endif
                                             </td>
-                                            <td><a href="{{ url("admin/add-edit-category/".$category->id) }}">Редактировать</a></td>
+                                            <td>
+                                                <a href="{{ url("admin/add-edit-category/".$category->id) }}">Редактировать</a>
+                                                &nbsp;&nbsp;
+                                                <a href="{{ url("admin/delete-category/".$category->id) }}">Удалить</a>
+                                            </td>
                                         </tr>
                                     @endforeach
                                     </tbody>
