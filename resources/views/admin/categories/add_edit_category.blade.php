@@ -86,7 +86,7 @@
                                         <div>
                                             <img style="width: 60px; margin-top: 5px;" src="{{ asset('images/category_images/'.$categorydata['category_image']) }}" alt="">
                                             &nbsp;
-                                            <a href="{{ url('admin/delete-category-image/'.$categorydata['id']) }}">Удалить фото</a>
+                                            <a class="confirmDelete" href="javascript:void(0)" record="category-image" recordid="{{ $categorydata['id'] }}">Удалить фото</a>
                                         </div>
                                     @endif
                                 </div>

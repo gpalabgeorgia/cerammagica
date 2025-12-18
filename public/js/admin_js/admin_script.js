@@ -71,4 +71,22 @@ $(document).ready(function() {
             }
         });
     });
+
+    $('.confirmDelete').click(function() {
+        let record = $(this).attr('record');
+        let recordid = $(this).attr('recordid');
+        Swal.fire({
+            title: "Хотите удалить?",
+            text: "Вы не сможете отменить удаление!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Да, удалить!"
+        }).then((result) => {
+            if (result.value) {
+                window.location.href="/admin/delete-"+record+"/"+recordid;
+            }
+        });
+    });
 });
