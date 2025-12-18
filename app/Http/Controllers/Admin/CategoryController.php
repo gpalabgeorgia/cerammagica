@@ -30,59 +30,74 @@ class CategoryController extends Controller
         }
     }
 
-    public function addEditController(Request $request, $id=null) {
-        if($id=='') {
-            $title = 'Добавить категорию';
+    public function addEditCategory(Request $request, $id=null) {
+        if($id=="") {
+            // Add Category Functionality
+            $title = "კატეგორიის დამატება";
             $category = new Category;
+            $categorydata = array();
+            $getCategories = array();
+            $message = "კატეგორია წარმატებით დაემატა!";
         }else {
-            $title = 'Редактировать категорию';
+            // Edit Category Functionality
+            $title = "კატეგორიის რედაქტირება";
+            $categorydata = Category::where('id', $id)->first();
+            $categorydata = json_decode(json_encode($categorydata), true);
+            $getCategories = Category::with('subcategories')->where(['parent_id'=>0, 'section_id'=>$categorydata['section_id']])->get();
+            $getCategories = json_decode(json_encode($getCategories), true);
+            $category = Category::find($id);
+            $message = "კატეგორია წარმატებით განახლდა!";
         }
         if($request->isMethod('post')) {
             $data = $request->all();
 
+            // Category Validations
             $rules = [
                 'category_name' => 'required|regex:/^[\pL\s\-]+$/u',
                 'section_id' => 'required',
                 'url' => 'required',
-//                'category_image' => 'image'
+                'caegory_image' => 'image'
             ];
             $customMessages = [
-                'category_name.required' => 'Название категории объязательно',
-                'category_name.regex' => 'Валидное название объязательно',
-                'section_id.required' => 'Секция объязательна',
-                'url.required' => 'url объязателен',
-//                'category_image.image' => 'Загрузите валидное фото',
+                'category_name.required' => 'კატეგორიის სახელი სავალდებულოა',
+                'category_name.required' => 'გთხოვთ შეიყვანოთ ვალიდური სახელი',
+                'section_id.required' => 'სექცია სავალდებულოა',
+                'url.required' => 'url სავალდებულოა',
+                'category_image.image' => 'გთხოვთ ატვირთოთ ვალიდური ფოტო'
             ];
-            $this->validate($request,$rules,$customMessages);
+            $this->validate($request, $rules, $customMessages);
 
+
+            // Upload Category Image
             if($request->hasFile('category_image')) {
                 $image_tmp = $request->file('category_image');
                 if($image_tmp->isValid()) {
-                    // Get Image Extension
+                    // Get image extension
                     $extension = $image_tmp->getClientOriginalExtension();
-                    // Generate New Image Name
-                    $imageName = rand(111,99999).''.$extension;
+                    // Generate new image name
+                    $imageName = rand(111,99999).'.'.$extension;
                     $imagePath = 'images/category_images/'.$imageName;
                     // Upload the Image
                     Image::make($image_tmp)->save($imagePath);
+                    // Save Category Image
                     $category->category_image = $imageName;
                 }
             }
 
             if(empty($data['category_discount'])) {
-                $data['category_discount'] = '';
+                $data['category_discount'] = "";
             }
             if(empty($data['description'])) {
-                $data['description'] = '';
-            }
-            if(empty($data['meta_title'])) {
-                $data['meta_title'] = '';
+                $data['description'] = "";
             }
             if(empty($data['meta_description'])) {
-                $data['meta_description'] = '';
+                $data['meta_description'] = "";
+            }
+            if(empty($data['meta_title'])) {
+                $data['meta_title'] = "";
             }
             if(empty($data['meta_keywords'])) {
-                $data['meta_keywords'] = '';
+                $data['meta_keywords'] = "";
             }
 
             $category->parent_id = $data['parent_id'];
@@ -97,11 +112,13 @@ class CategoryController extends Controller
             $category->status = 1;
             $category->save();
 
-            session::flash('success_message', 'Категория успешно добавилась!');
+            session::flash('success_message', $message);
             return redirect('admin/categories');
         }
+
+        // Get all Sections
         $getSections = Section::get();
-        return view('admin.categories.add_edit_category')->with(compact('title', 'getSections'));
+        return view('admin.categories.add_edit_category')->with(compact('title', 'getSections', 'categorydata', 'getCategories'));
     }
 
     public function appendCategoryLevel(Request $request) {

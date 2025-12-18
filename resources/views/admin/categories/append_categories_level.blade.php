@@ -8,6 +8,7 @@
                 @if(!empty($category['subcategories']))
                     @foreach($category['subcategories'] as $subcategory)
                         <option value="{{ $subcategory['id'] }}">&nbsp;&raquo;&nbsp;{{ $subcategory['category_name'] }}</option>
+
                     @endforeach
                 @endif
             @endforeach

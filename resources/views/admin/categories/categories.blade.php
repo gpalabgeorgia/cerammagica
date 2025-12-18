@@ -43,6 +43,7 @@
                                         <th>Секция</th>
                                         <th>URL</th>
                                         <th>Статус</th>
+                                        <th>Действия</th>
                                     </tr>
                                     </thead>
                                     <tbody>
@@ -65,6 +66,7 @@
                                                     <a class="updateCategoryStatus" id="category-{{ $category->id }}" category_id="{{ $category->id }}" href="javascript:void(0);">Неактивный</a>
                                                 @endif
                                             </td>
+                                            <td><a href="{{ url("admin/add-edit-category/".$category->id) }}">Редактировать</a></td>
                                         </tr>
                                     @endforeach
                                     </tbody>
