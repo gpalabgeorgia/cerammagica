@@ -13,7 +13,7 @@ class CategoryController extends Controller
 {
     public function categories() {
         Session::put('page', 'categories');
-        $categories = Category::get();
+        $categories = Category::with(['section', 'parentcategory'])->get();
         return view('admin.categories.categories')->with(compact('categories'));
     }
 

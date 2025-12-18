@@ -38,16 +38,25 @@
                                     <thead>
                                     <tr>
                                         <th>ID</th>
-                                        <th>Название</th>
+                                        <th>Категория</th>
+                                        <th>Родительская Категория</th>
+                                        <th>Секция</th>
                                         <th>URL</th>
                                         <th>Статус</th>
                                     </tr>
                                     </thead>
                                     <tbody>
                                     @foreach($categories as $category)
+                                        @if(!isset($category->parentcategory->category_name))
+                                            <?php $parent_category = "Родительская"; ?>
+                                        @else
+                                                <?php $parent_category = $category->parentcategory->category_name; ?>
+                                        @endif
                                         <tr>
                                             <td>{{ $category->id }}</td>
                                             <td>{{ $category->category_name }}</td>
+                                            <td>{{ $parent_category }}</td>
+                                            <td>{{ $category->section->name }}</td>
                                             <td>{{ $category->url }}</td>
                                             <td>
                                                 @if($category->status==1)
