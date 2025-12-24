@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\CategoryController;
+use App\Http\Controllers\Admin\ProductsController;
 use App\Http\Controllers\Admin\SectionController;
 use Illuminate\Support\Facades\Route;
 
@@ -49,6 +50,11 @@ Route::prefix('/admin')->namespace('Admin')->group(function() {
         Route::post('append-categories-level', [CategoryController::class, 'appendCategoryLevel']);
         Route::get('delete-category-image/{id}', [CategoryController::class, 'deleteCategoryImage']);
         Route::get('delete-category/{id}', [CategoryController::class, 'deleteCategory']);
+
+        // Products
+        Route::get('products', [ProductsController::class, 'products']);
+        Route::post('update-product-status', [ProductsController::class, 'updateProductStatus']);
+        Route::get('delete-product/{id}', [ProductsController::class, 'deleteProduct']);
     });
 
 });

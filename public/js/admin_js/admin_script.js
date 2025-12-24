@@ -57,6 +57,25 @@ $(document).ready(function() {
         });
     });
 
+    $(".updateProductStatus").click(function() {
+        let status = $(this).text();
+        let product_id = $(this).attr("product_id");
+        $.ajax({
+            type: 'post',
+            url: '/admin/update-product-status',
+            data: {status:status,product_id:product_id},
+            success: function(resp) {
+                if(resp['status']==0) {
+                    $('#product-'+product_id).html('<a class="updateProductStatus" href="javascript:void(0)">Неактивный</a>');
+                }else if(resp['status']==1) {
+                    $('#product-'+product_id).html('<a class="updateProductStatus" href="javascript:void(0)">Активный</a>');
+                }
+            },error: function() {
+                alert('Произошла ошибка!');
+            }
+        });
+    });
+
     // Append Categories Level
     $('#section_id').change(function() {
         let section_id = $(this).val();
