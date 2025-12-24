@@ -41,6 +41,8 @@
                                         <th>Название</th>
                                         <th>Код</th>
                                         <th>Цвет</th>
+                                        <th>Категория</th>
+                                        <th>Секция</th>
                                         <th>Статус</th>
                                         <th>Действия</th>
                                     </tr>
@@ -52,6 +54,8 @@
                                             <td>{{ $product->product_name }}</td>
                                             <td>{{ $product->product_code }}</td>
                                             <td>{{ $product->product_color }}</td>
+                                            <td>{{ $product->category->category_name }}</td>
+                                            <td>{{ $product->section->name }}</td>
                                             <td>
                                                 @if($product->status==1)
                                                     <a class="updateProductStatus" id="product-{{ $product->id }}" product_id="{{ $product->id }}" href="javascript:void(0);">Активный</a>
