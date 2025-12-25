@@ -38,4 +38,20 @@ class ProductsController extends Controller
         session::flash('success_message', $message);
         return redirect()->back();
     }
+
+    public function addEditProduct(Request $request, $id=null) {
+        if($id=="") {
+            $title = "Добавить продукт!";
+        }else {
+            $title = "Редактировать продукт!";
+        }
+        // Filter Arrays
+        $fabricArray = array('Cotton','Polyester','Wool');
+        $sleeveArray = array('Full Sleeve','Half Sleeve','Short Sleeve', 'Sleeveless');
+        $patternArray = array('Checked','Plain','Printed','Self', 'Solid');
+        $fitArray = array('Regular','Slim');
+        $occasionArray = array('Casual','Formal');
+
+        return view('admin.products.add_edit_product')->with(compact('title', 'fabricArray', 'sleeveArray', 'patternArray', 'fitArray', 'occasionArray'));
+    }
 }
