@@ -9,4 +9,8 @@ class Section extends Model
 {
     use HasFactory;
     protected $guard = 'sections';
+
+    public function categories() {
+        return $this->hasMany('App\Models\Category', 'section_id')->where(['parent_id'=>'Родительская', 'status'=>1])->with('subcategories');
+    }
 }

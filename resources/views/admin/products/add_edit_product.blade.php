@@ -56,6 +56,15 @@
                                         <label>Выделить Категорию</label>
                                         <select name="category_id" id="category_id" class="form-control select2" style="width: 100%;">
                                             <option value="">Выделить</option>
+                                            @foreach($categories as $section)
+                                                <optgroup label="{{ $section['name'] }}"></optgroup>
+                                                @foreach($section['categories'] as $category)
+                                                    <option value="{{ $category['id'] }}">&nbsp;&nbsp;&nbsp;---&nbsp;&nbsp;&nbsp;{{ $category['category_name'] }}</option>
+                                                    @foreach($category['subcategories'] as $subcategory)
+                                                        <option value="{{ $subcategory['id'] }}">&nbsp;&nbsp;&nbsp;---&nbsp;&nbsp;&nbsp;{{ $subcategory['category_name'] }}</option>
+                                                    @endforeach
+                                                @endforeach
+                                            @endforeach
                                         </select>
                                     </div>
                                     <div class="form-group">
@@ -131,6 +140,57 @@
                                     </textarea>
                                     </div>
                                     <div class="form-group">
+                                        <label>Выделить Материал</label>
+                                        <select name="fabric" id="fabric_id" class="form-control select2" style="width: 100%;">
+                                            <option value="">Выделить</option>
+                                            @foreach($fabricArray as $fabric)
+                                                <option value="{{ $fabric }}">{{ $fabric }}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-12 col-sm-6">
+                                    <div class="form-group">
+                                        <label>Выделить Рукав</label>
+                                        <select name="sleeve" id="sleeve_id" class="form-control select2" style="width: 100%;">
+                                            <option value="">Выделить</option>
+                                            @foreach($sleeveArray as $sleeve)
+                                                <option value="{{ $sleeve }}">{{ $sleeve }}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Выделить Принт</label>
+                                        <select name="pattern" id="pattern_id" class="form-control select2" style="width: 100%;">
+                                            <option value="">Выделить</option>
+                                            @foreach($patternArray as $pattern)
+                                                <option value="{{ $pattern }}">{{ $pattern }}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-12 col-sm-6">
+                                    <div class="form-group">
+                                        <label>Выделить Посадку</label>
+                                        <select name="fit" id="fit_id" class="form-control select2" style="width: 100%;">
+                                            <option value="">Выделить</option>
+                                            @foreach($fitArray as $fit)
+                                                <option value="{{ $fit }}">{{ $fit }}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Выделить Повод</label>
+                                        <select name="occasion" id="occasion_id" class="form-control select2" style="width: 100%;">
+                                            <option value="">Выделить</option>
+                                            @foreach($occasionArray as $occasion)
+                                                <option value="{{ $occasion }}">{{ $occasion }}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-12 col-sm-6">
+                                    <div class="form-group">
                                         <label class="product_name">Meta Название категории</label>
                                         <input type="text" class="form-control" id="meta_title" name="meta_title" placeholder="Введите meta название категории" @if(!empty($productdata['meta_title'])) value="{{ $productdata['meta_title'] }}" @else value="{{ old('meta_title') }}" @endif>
                                     </div>
@@ -147,6 +207,10 @@
                                     <div class="form-group">
                                         <label class="product_name">Meta Ключевые слова</label>
                                         <input type="text" class="form-control" id="meta_keywords" name="meta_keywords" placeholder="Введите Meta Ключевые слова" @if(!empty($productdata['meta_keywords'])) value="{{ $productdata['meta_keywords'] }}" @else value="{{ old('meta_keywords') }}" @endif>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="product_name">В наличии</label>
+                                        <input type="checkbox" name="is_featured" id="is_featured" value="1">
                                     </div>
                                 </div>
                             </div>
