@@ -8,6 +8,7 @@ use App\Models\Product;
 use App\Models\Section;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
+use Intervention\Image\Facades\Image;
 
 class ProductsController extends Controller
 {
@@ -114,6 +115,39 @@ class ProductsController extends Controller
             }
             if(empty($data['wash_care'])) {
                 $data['wash_care'] = "";
+            }
+
+            // Upload Product Image
+            if($request->hasFile('main_image')) {
+                $image_tmp = $request->file('main_image');
+                if($image_tmp->isValid()) {
+                    // Upload image after resize
+                    $image_name = $image_tmp->getClientOriginalName();
+                    $extension = $image_tmp->getClientOriginalExtension();
+                    $imageName = $image_name.'-'.rand(111,99999).'.'.$extension;
+                    $large_image_path = 'images/product_images/large/'.$imageName;
+                    $medium_image_path = 'images/product_images/medium/'.$imageName;
+                    $small_image_path = 'images/product_images/small/'.$imageName;
+                    Image::make($image_tmp)->save($large_image_path); // W:1040 H:1200
+                    Image::make($image_tmp)->resize(520, 600)->save($medium_image_path);
+                    Image::make($image_tmp)->resize(260, 300)->save($small_image_path);
+                    $product->main_image = $imageName;
+                }
+            }
+
+            // Upload Product Video
+            if($request->hasFile('product_video')) {
+                $video_tmp = $request->file('product_video');
+                if($video_tmp->isValid()) {
+                    // Upload Video
+                    $video_name = $video_tmp->getClientOriginalName();
+                    $extension = $video_tmp->getClientOriginalExtension();
+                    $videoName = $video_name.'-'.'.'.$extension;
+                    $video_path = 'videos/product_videos/';
+                    $video_tmp->move($video_path,$videoName);
+                    // Save Video in products table
+                    $product->product_video = $videoName;
+                }
             }
 
             // Save Product Details in product table

@@ -108,6 +108,7 @@
                                                 <span class="input-group-text">Загрузить</span>
                                             </div>
                                         </div>
+                                        <div>Рекомендованный размер фото: Width=1040px, Height=1200px</div>
                                     </div>
                                 </div>
                             </div>
