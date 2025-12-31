@@ -109,6 +109,13 @@
                                             </div>
                                         </div>
                                         <div>Рекомендованный размер фото: Width=1040px, Height=1200px</div>
+                                        @if(!empty($productdata['main_image']))
+                                            <div>
+                                                <img style="width: 60px; margin-top: 5px;" src="{{ asset('images/product_images/small/'.$productdata['main_image']) }}" alt="">
+                                                &nbsp;
+                                                <a class="confirmDelete" href="javascript:void(0)" record="product-image" recordid="{{ $productdata['id'] }}">Удалить фото</a>
+                                            </div>
+                                        @endif
                                     </div>
                                 </div>
                             </div>
@@ -125,6 +132,13 @@
                                                 <span class="input-group-text">Загрузить</span>
                                             </div>
                                         </div>
+                                        @if($productdata['product_video'])
+                                            <div>
+                                                <a href="{{ url('videos/product_videos/'.$productdata['product_video']) }}" download="">Скачать</a>
+                                                &nbsp;|&nbsp;
+                                                <a class="confirmDelete" href="javascript:void(0)" record="product-video" recordid="{{ $productdata['id'] }}">Удалить Видео</a>
+                                            </div>
+                                        @endif
                                     </div>
                                     <div class="form-group">
                                         <label class="product_name">Описание продукта</label>
