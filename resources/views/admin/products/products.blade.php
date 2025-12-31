@@ -41,6 +41,7 @@
                                         <th>Название</th>
                                         <th>Код</th>
                                         <th>Цвет</th>
+                                        <th>Фото</th>
                                         <th>Категория</th>
                                         <th>Секция</th>
                                         <th>Статус</th>
@@ -54,6 +55,12 @@
                                             <td>{{ $product->product_name }}</td>
                                             <td>{{ $product->product_code }}</td>
                                             <td>{{ $product->product_color }}</td>
+                                            <td>
+                                                <?php $product_image_path = 'images/product_images/small/'.$product->main_image; ?>
+                                                @if(!empty($product->main_image) && file_exists($product_image_path))
+                                                    <img style="width: 80px;" src="{{ asset('images/product_images/small/'.$product->main_image) }}" alt="Product Image">
+                                                @endif
+                                            </td>
                                             <td>{{ $product->category->category_name }}</td>
                                             <td>{{ $product->section->name }}</td>
                                             <td>

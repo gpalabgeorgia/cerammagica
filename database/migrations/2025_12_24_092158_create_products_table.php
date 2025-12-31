@@ -34,7 +34,7 @@ class CreateProductsTable extends Migration
             $table->string('occasion');
             $table->string('meta_title');
             $table->text('meta_description');
-            $table->string('meta_keywords');
+            $table->text('meta_keywords');
             $table->enum('is_featured', ['No','Yes']);
             $table->tinyInteger('status');
             $table->timestamps();

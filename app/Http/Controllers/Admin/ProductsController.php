@@ -46,8 +46,14 @@ class ProductsController extends Controller
         if($id=="") {
             $title = "Добавить продукт!";
             $product = new Product;
+            $productdata = array();
+            $message = "Продукт успешно добавился!";
         }else {
             $title = "Редактировать продукт!";
+            $productdata = Product::find($id);
+            $productdata = json_decode(json_encode($productdata), true);
+            $product = Product::find($id);
+            $message = "Продукт успешно обновился!";
         }
         if($request->isMethod('post')) {
             $data = $request->all();
@@ -55,17 +61,17 @@ class ProductsController extends Controller
             // Product Validations
             $rules = [
                 'category_id' => 'required',
+
                 'product_name' => 'required|regex:/^[\pL\s\-]+$/u',
                 'product_code' => 'required|regex:/^[\w-]*$/',
                 'product_price' => 'required|numeric',
                 'product_color' => 'required|regex:/^[\pL\s\-]+$/u',
-
             ];
             $customMessages = [
                 'category_id.required' => 'Название категории объязательно',
                 'product_name.required' => 'Название продукта объязательна',
                 'product_name.regex' => 'Валидное название объязательно',
-                'product_code.required' => 'Код продукта объязательна',
+                'product_code.required' => 'Код продукта объязателен',
                 'product_code.regex' => 'Валидный код объязателен',
                 'product_price.required' => 'Цена продукта объязательно',
                 'product_price.numeric' => 'Валидная цена объязательна',
@@ -75,16 +81,15 @@ class ProductsController extends Controller
             $this->validate($request, $rules, $customMessages);
 
             if(empty($data['is_featured'])) {
-                $is_featured = 'No';
+                $is_featured = "No";
             } else {
-                $is_featured = 'Yes';
+                $is_featured = "Yes";
             }
-
             if(empty($data['fabric'])) {
                 $data['fabric'] = "";
             }
             if(empty($data['pattern'])) {
-                $data['pattern'] = "";
+                $data['fabric'] = "";
             }
             if(empty($data['sleeve'])) {
                 $data['sleeve'] = "";
@@ -104,33 +109,39 @@ class ProductsController extends Controller
             if(empty($data['meta_description'])) {
                 $data['meta_description'] = "";
             }
-            if(empty($data['product_discount'])) {
-                $data['product_discount'] = "";
-            }
-            if(empty($data['description'])) {
-                $data['description'] = "";
-            }
-            if(empty($data['product_weight'])) {
-                $data['product_weight'] = "";
-            }
             if(empty($data['wash_care'])) {
                 $data['wash_care'] = "";
+            }
+            if(empty($data['pattern'])) {
+                $data['pattern'] = "";
+            }
+            if(empty($data['product_discount'])) {
+                $data['product_discount'] = 0;
+            }
+            if(empty($data['product_weight'])) {
+                $data['product_weight'] = 0;
             }
 
             // Upload Product Image
             if($request->hasFile('main_image')) {
                 $image_tmp = $request->file('main_image');
                 if($image_tmp->isValid()) {
-                    // Upload image after resize
+                    // Get Original Image Name
                     $image_name = $image_tmp->getClientOriginalName();
+                    // Get Image Extension
                     $extension = $image_tmp->getClientOriginalExtension();
+                    // Generate New Image Name
                     $imageName = $image_name.'-'.rand(111,99999).'.'.$extension;
+                    // set paths for small, medium and large images
                     $large_image_path = 'images/product_images/large/'.$imageName;
                     $medium_image_path = 'images/product_images/medium/'.$imageName;
                     $small_image_path = 'images/product_images/small/'.$imageName;
-                    Image::make($image_tmp)->save($large_image_path); // W:1040 H:1200
-                    Image::make($image_tmp)->resize(520, 600)->save($medium_image_path);
-                    Image::make($image_tmp)->resize(260, 300)->save($small_image_path);
+                    // Upload Large Image after Resize
+                    Image::make($image_tmp)->save($large_image_path); // W: 1040 H:1200
+                    // Upload Medium and Small Image after Resize
+                    Image::make($image_tmp)->resize(500,500)->save($medium_image_path);
+                    Image::make($image_tmp)->resize(250,250)->save($small_image_path);
+                    // Save Main Image in products table
                     $product->main_image = $imageName;
                 }
             }
@@ -142,15 +153,15 @@ class ProductsController extends Controller
                     // Upload Video
                     $video_name = $video_tmp->getClientOriginalName();
                     $extension = $video_tmp->getClientOriginalExtension();
-                    $videoName = $video_name.'-'.'.'.$extension;
+                    $videoName = $video_name.'.'.$extension;
                     $video_path = 'videos/product_videos/';
-                    $video_tmp->move($video_path,$videoName);
+                    $video_tmp->move($video_path, $videoName);
                     // Save Video in products table
                     $product->product_video = $videoName;
                 }
             }
 
-            // Save Product Details in product table
+            // Save Product Details in products table
             $categoryDetails = Category::find($data['category_id']);
             $product->section_id = $categoryDetails['section_id'];
             $product->category_id = $data['category_id'];
@@ -173,10 +184,11 @@ class ProductsController extends Controller
             $product->is_featured = $is_featured;
             $product->status = 1;
             $product->save();
-            session::flash('success_message', 'Продукт успешно добавился!');
+            session::flash('success_message', $message);
             return redirect('admin/products');
+
         }
-        // Filter Arrays
+        // Product Filters
         $fabricArray = array('Cotton','Polyester','Wool');
         $sleeveArray = array('Full Sleeve','Half Sleeve','Short Sleeve', 'Sleeveless');
         $patternArray = array('Checked','Plain','Printed','Self', 'Solid');
@@ -188,6 +200,6 @@ class ProductsController extends Controller
         $categories = json_decode(json_encode($categories), true);
 
 
-        return view('admin.products.add_edit_product')->with(compact('title', 'fabricArray', 'sleeveArray', 'patternArray', 'fitArray', 'occasionArray', 'categories'));
+        return view('admin.products.add_edit_product')->with(compact('title', 'fabricArray', 'sleeveArray', 'patternArray','fitArray','occasionArray', 'categories', 'productdata'));
     }
 }
