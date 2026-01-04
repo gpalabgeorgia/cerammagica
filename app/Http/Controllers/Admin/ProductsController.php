@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Category;
 use App\Models\Product;
+use App\Models\ProductsAttributes;
 use App\Models\Section;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
@@ -249,5 +250,43 @@ class ProductsController extends Controller
         $message = 'Видео продукта удалилась!';
         session::flash('success_message', $message);
         return redirect()->back();
+    }
+
+    public function addAttributes(Request $request, $id) {
+        if($request->isMethod('post')) {
+            $data = $request->all();
+            foreach($data['sku'] as $key => $value) {
+                if(!empty($value)) {
+                    // SKU already exist check
+                    $attrCountSKU = ProductsAttributes::where('sku', $value)->count();
+                    if($attrCountSKU>0) {
+                        $message = 'SKU код уже существует. Подберите другой код!';
+                        session::flash('error_message', $message);
+                        return redirect()->back();
+                    }
+                    // Size already exist check
+                    $attrCountSize = ProductsAttributes::where(['product_id'=>$id, 'size'=>$data['size'][$key]])->count();
+                    if($attrCountSize>0) {
+                        $message = 'Размер уже существует. Подберите другой размер!';
+                        session::flash('error_message', $message);
+                        return redirect()->back();
+                    }
+                    $attribute = new ProductsAttributes;
+                    $attribute->product_id = $id;
+                    $attribute->sku = $value;
+                    $attribute->size = $data['size'][$key];
+                    $attribute->price = $data['price'][$key];
+                    $attribute->stock = $data['stock'][$key];
+                    $attribute->save();
+                }
+            }
+            $success_message = 'Аттрибут продукта успешно добавлен!';
+            session::flash('success_message', $success_message);
+            return redirect()->back();
+        }
+        $productdata = Product::find($id);
+        $productdata = json_decode(json_encode($productdata), true);
+        $title = 'Атрибуты Продукта';
+        return view('admin.products.add_attributes')->with(compact('productdata', 'title'));
     }
 }

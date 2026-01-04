@@ -108,4 +108,29 @@ $(document).ready(function() {
             }
         });
     });
+
+    // Products Attributes  Add/Remove Script
+    var maxField = 10; //Input fields increment limitation
+    var addButton = $('.add_button'); //Add button selector
+    var wrapper = $('.field_wrapper'); //Input field wrapper
+    var fieldHTML = '<div><div style="height: 10px;"></div><input type="text" name="size[]" style="width: 120px;" placeholder="Размер" required=""/>&nbsp;<input type="text" name="sku[]" style="width: 120px;" placeholder="SKU" required=""/>&nbsp;<input type="number" name="price[]" style="width: 120px;" placeholder="Цена" required=""/>&nbsp;<input type="number" name="stock[]" style="width: 120px;" placeholder="Количество" required=""/><a href="javascript:void(0);" class="remove_button">Удалить</a></div>'; //New input field html
+    var x = 1; //Initial field counter is 1
+
+    // Once add button is clicked
+    $(addButton).click(function(){
+        //Check maximum number of input fields
+        if(x < maxField){
+            x++; //Increase field counter
+            $(wrapper).append(fieldHTML); //Add field html
+        }else{
+            alert('A maximum of '+maxField+' fields are allowed to be added. ');
+        }
+    });
+
+    // Once remove button is clicked
+    $(wrapper).on('click', '.remove_button', function(e){
+        e.preventDefault();
+        $(this).parent('div').remove(); //Remove field html
+        x--; //Decrease field counter
+    });
 });
