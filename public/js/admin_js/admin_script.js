@@ -76,6 +76,25 @@ $(document).ready(function() {
         });
     });
 
+    $(".updateAttributeStatus").click(function() {
+        let status = $(this).text();
+        let attribute_id = $(this).attr("attribute_id");
+        $.ajax({
+            type: 'post',
+            url: '/admin/update-attribute-status',
+            data: {status:status,attribute_id:attribute_id},
+            success: function(resp) {
+                if(resp['status']==0) {
+                    $('#attribute-'+attribute_id).html('Неактивный');
+                }else if(resp['status']==1) {
+                    $('#attribute-'+attribute_id).html('Активный');
+                }
+            },error: function() {
+                alert('Произошла ошибка!');
+            }
+        });
+    });
+
     // Append Categories Level
     $('#section_id').change(function() {
         let section_id = $(this).val();

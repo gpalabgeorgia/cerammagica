@@ -36,9 +36,29 @@ class ProductsController extends Controller
         }
     }
 
+    public function updateAttributeStatus(Request $request) {
+        if($request->ajax()) {
+            $data = $request->all();
+            if($data['status']=='Активный') {
+                $status = 0;
+            }else {
+                $status = 1;
+            }
+            ProductsAttributes::where('id', $data['attribute_id'])->update(['status'=>$status]);
+            return response()->json(['status'=>$status, 'attribute_id'=>$data['attribute_id']]);
+        }
+    }
+
     public function deleteProduct($id) {
         Product::where('id', $id)->delete();
         $message = 'Продукт удалился!';
+        session::flash('success_message', $message);
+        return redirect()->back();
+    }
+
+    public function deleteAttribute($id) {
+        ProductsAttributes::where('id', $id)->delete();
+        $message = 'Аттрибут удалился!';
         session::flash('success_message', $message);
         return redirect()->back();
     }
@@ -277,6 +297,7 @@ class ProductsController extends Controller
                     $attribute->size = $data['size'][$key];
                     $attribute->price = $data['price'][$key];
                     $attribute->stock = $data['stock'][$key];
+                    $attribute->status = 1;
                     $attribute->save();
                 }
             }
