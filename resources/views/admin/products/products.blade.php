@@ -73,6 +73,8 @@
                                             <td>
                                                 <a title="Добавить/Редактировать Аттрибуты" href="{{ url("admin/add-attributes/".$product->id) }}"><i class="fas fa-plus"></i></a>
                                                 &nbsp;&nbsp;
+                                                <a title="Добавить Изображения" href="{{ url("admin/add-images/".$product->id) }}"><i class="fas fa-plus-circle"></i></a>
+                                                &nbsp;&nbsp;
                                                 <a title="Редактировать Продукт" href="{{ url("admin/add-edit-product/".$product->id) }}"><i class="fas fa-edit"></i></a>
                                                 &nbsp;&nbsp;
                                                 <a title="Удалить Продукт" href="javascript:void(0)" class="confirmDelete" record="product" recordid="{{ $product->id }}"><i class="fas fa-trash"></i></a>

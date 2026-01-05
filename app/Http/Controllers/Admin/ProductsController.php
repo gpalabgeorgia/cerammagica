@@ -101,11 +101,11 @@ class ProductsController extends Controller
             ];
             $this->validate($request, $rules, $customMessages);
 
-            if(empty($data['is_featured'])) {
-                $is_featured = "No";
-            } else {
-                $is_featured = "Yes";
-            }
+//            if(empty($data['is_featured'])) {
+//                $is_featured = "No";
+//            } else {
+//                $is_featured = "Yes";
+//            }
             if(empty($data['fabric'])) {
                 $data['fabric'] = "";
             }
@@ -202,7 +202,9 @@ class ProductsController extends Controller
             $product->meta_title = $data['meta_title'];
             $product->meta_keywords = $data['meta_keywords'];
             $product->meta_description = $data['meta_description'];
-            $product->is_featured = $is_featured;
+            if(!empty($data['is_featured'])) {
+                $product->is_featured = $data['is_featured'];
+            }
             $product->status = 1;
             $product->save();
             session::flash('success_message', $message);
@@ -323,5 +325,12 @@ class ProductsController extends Controller
             session::flash('success_message', $message);
             return redirect()->back();
         }
+    }
+
+    public function addImages($id) {
+        $productdata = Product::with('images')->select('id', 'product_name', 'product_code', 'product_color', 'main_image')->find($id);
+        $productdata = json_decode(json_encode($productdata), true);
+        $title = 'Фотографии Продукта';
+        return view('admin.products.add_images')->with(compact('productdata', 'title'));
     }
 }
