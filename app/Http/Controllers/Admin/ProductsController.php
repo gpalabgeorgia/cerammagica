@@ -284,9 +284,23 @@ class ProductsController extends Controller
             session::flash('success_message', $success_message);
             return redirect()->back();
         }
-        $productdata = Product::find($id);
+        $productdata = Product::select('id', 'product_name', 'product_code', 'product_color', 'main_image')->with('attributes')->find($id);
         $productdata = json_decode(json_encode($productdata), true);
         $title = 'Атрибуты Продукта';
         return view('admin.products.add_attributes')->with(compact('productdata', 'title'));
+    }
+
+    public function editAttributes(Request $request, $id) {
+        if($request->isMethod('post')) {
+            $data = $request->all();
+            foreach($data['attrId'] as $key => $attr) {
+                if(!empty($attr)) {
+                    ProductsAttributes::where(['id'=>$data['attrId'][$key]])->update(['price'=>$data['price'][$key], 'stock'=>$data['stock'][$key]]);
+                }
+            }
+            $message = 'Атрибуты продукта успешно обновились!';
+            session::flash('success_message', $message);
+            return redirect()->back();
+        }
     }
 }

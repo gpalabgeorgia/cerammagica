@@ -95,6 +95,46 @@
                         </div>
                     </div>
                 </form>
+                <form name="editAttributeForm" id="editAttributeForm" method="post" action="{{ url('admin/edit-attributes/'.$productdata['id']) }}">@csrf
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="card-title">Добавить Аттрибуты</h3>
+                        </div>
+                        <div class="card-body">
+                            <table id="products" class="table table-bordered table-striped">
+                                <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Размер</th>
+                                    <th>SKU Код</th>
+                                    <th>Цена</th>
+                                    <th>Количество</th>
+                                    <th>Действия</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                @foreach($productdata['attributes'] as $attribute)
+                                    <input type="hidden" name="attrId[]" value="{{ $attribute['id'] }}">
+                                    <tr>
+                                        <td>{{ $attribute['id'] }}</td>
+                                        <td>{{ $attribute['size'] }}</td>
+                                        <td>{{ $attribute['sku'] }}</td>
+                                        <td>{{ $attribute['price'] }}
+                                            <input type="number" name="price[]" value="{{ $attribute['price'] }}">
+                                        </td>
+                                        <td>
+                                            <input type="number" name="stock[]" value="{{ $attribute['stock'] }}">
+                                        </td>
+                                    </tr>
+                                @endforeach
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="card-footer">
+                            <button type="submit" class="btn btn-primary">Обновить Аттрибуты</button>
+                        </div>
+                    </div>
+                </form>
             </div>
         </section>
     </div>
