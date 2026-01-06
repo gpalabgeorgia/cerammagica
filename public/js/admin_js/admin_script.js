@@ -38,6 +38,26 @@ $(document).ready(function() {
             }
         });
     });
+
+    $(".updateBrandStatus").click(function() {
+        let status = $(this).children("i").attr("status");
+        let brand_id = $(this).attr("brand_id");
+        $.ajax({
+            type: 'post',
+            url: '/admin/update-brand-status',
+            data: {status:status,brand_id:brand_id},
+            success: function(resp) {
+                if(resp['status']==0) {
+                    $('#brand-'+brand_id).html('<i class="fas fa-toggle-off" aria-hidden="true" status="Неактивный"></i>');
+                }else if(resp['status']==1) {
+                    $('#brand-'+brand_id).html('<i class="fas fa-toggle-on" aria-hidden="true" status="Активный"></i>');
+                }
+            },error: function() {
+                alert('Произошла ошибка!');
+            }
+        });
+    });
+
     $(".updateCategoryStatus").click(function() {
         let status = $(this).text();
         let category_id = $(this).attr("category_id");

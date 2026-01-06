@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\AdminController;
+use App\Http\Controllers\Admin\BrandController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\ProductsController;
 use App\Http\Controllers\Admin\SectionController;
@@ -42,6 +43,12 @@ Route::prefix('/admin')->namespace('Admin')->group(function() {
         // Sections
         Route::get('sections', [SectionController::class, 'sections']);
         Route::post('update-section-status', [SectionController::class, 'updateSectionStatus']);
+
+        // Brands
+        Route::get('brands', [BrandController::class, 'brands']);
+        Route::post('update-brand-status', [BrandController::class, 'updateBrandStatus']);
+        Route::match(['get', 'post'], 'add-edit-brand/{id?}', [BrandController::class, 'addEditBrand']);
+        Route::get('delete-brand/{id}', [BrandController::class, 'deleteBrand']);
 
         // Categories
         Route::get('categories', [CategoryController::class, 'categories']);
