@@ -95,6 +95,25 @@ $(document).ready(function() {
         });
     });
 
+    $(".updateImageStatus").click(function() {
+        let status = $(this).text();
+        let image_id = $(this).attr("image_id");
+        $.ajax({
+            type: 'post',
+            url: '/admin/update-image-status',
+            data: {status:status,image_id:image_id},
+            success: function(resp) {
+                if(resp['status']==0) {
+                    $('#image-'+image_id).html('Неактивный');
+                }else if(resp['status']==1) {
+                    $('#image-'+image_id).html('Активный');
+                }
+            },error: function() {
+                alert('Произошла ошибка!');
+            }
+        });
+    });
+
     // Append Categories Level
     $('#section_id').change(function() {
         let section_id = $(this).val();
