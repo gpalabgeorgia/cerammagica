@@ -68,6 +68,15 @@
                                         </select>
                                     </div>
                                     <div class="form-group">
+                                        <label>Выделить Бренд</label>
+                                        <select name="brand_id" id="brand_id" class="form-control select2" style="width: 100%;">
+                                            <option value="">Выделить</option>
+                                            @foreach($brands as $brand)
+                                                <option value="{{ $brand['id'] }}" @if(!empty($productdata['brand_id']) && $productdata['brand_id']==$brand['id']) selected="" @endif>{{ $brand['name'] }}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                    <div class="form-group">
                                         <label class="product_name">Название Продукта</label>
                                         <input type="text" class="form-control" id="product_name" name="product_name" placeholder="Введите название продукта" @if(!empty($productdata['product_name'])) value="{{ $productdata['product_name'] }}" @else value="{{ old('product_name') }}" @endif>
                                     </div>
