@@ -815,7 +815,7 @@
     <section class="cta-banner-section fix section-padding pt-0">
         <div class="container">
             <div class="cta-banner-wrapper section-padding bg-cover"
-                 style="background-image: url('{{ asset('images/front_images/cta-banner.jpg') }});">
+                 style="background-image: url('{{ asset('images/front_images/cta-banner.jpg') }}');">
                 <div class="book-shape">
                     <img src="{{ asset('images/front_images/book-shape.png') }}" alt="shape-img">
                 </div>
