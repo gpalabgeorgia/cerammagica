@@ -6,7 +6,7 @@
                     <i class="icon-icon-5"></i>
                 </div>
                 <div class="content">
-                    <p>Call Us 7/24</p>
+                    <p>Llámanos 7/24</p>
                     <h3>
                         <a href="tel:+2085550112">+208-555-0112</a>
                     </h3>
@@ -17,7 +17,7 @@
                     <i class="icon-icon-6"></i>
                 </div>
                 <div class="content">
-                    <p>Make a Quote</p>
+                    <p>Presupuesto</p>
                     <h3>
                         <a href="mailto:example@gmail.com">example@gmail.com</a>
                     </h3>
@@ -28,7 +28,7 @@
                     <i class="icon-icon-7"></i>
                 </div>
                 <div class="content">
-                    <p>Opening Hour</p>
+                    <p>Horario</p>
                     <h3>
                         Sunday - Fri: 9 aM - 6 pM
                     </h3>
@@ -39,9 +39,9 @@
                     <i class="icon-icon-8"></i>
                 </div>
                 <div class="content">
-                    <p>Location</p>
+                    <p>Dirección</p>
                     <h3>
-                        4517 Washington ave.
+                        4517 ave. Benidorm
                     </h3>
                 </div>
             </div>
@@ -49,15 +49,15 @@
     </div>
     <div class="footer-widgets-wrapper">
         <div class="plane-shape float-bob-y">
-            <img src="assets/img/plane-shape.png" alt="img">
+            <img src="{{ asset('images/front_images/plane-shape.png') }}" alt="img">
         </div>
         <div class="container">
             <div class="row">
                 <div class="col-xl-3 col-lg-4 col-md-6 wow fadeInUp" data-wow-delay=".2s">
                     <div class="single-footer-widget">
                         <div class="widget-head">
-                            <a href="index.html">
-                                <img src="assets/img/logo/white-logo.svg" alt="logo-img">
+                            <a href="#">
+                                <img src="{{ asset('images/front_images/logo/white-logo.svg') }}" alt="logo-img">
                             </a>
                         </div>
                         <div class="footer-content">
@@ -77,31 +77,31 @@
                 <div class="col-xl-3 col-lg-4 col-md-6 ps-lg-5 wow fadeInUp" data-wow-delay=".4s">
                     <div class="single-footer-widget">
                         <div class="widget-head">
-                            <h3>Costumers Support</h3>
+                            <h3>Soporte</h3>
                         </div>
                         <ul class="list-area">
                             <li>
-                                <a href="shop.html">
+                                <a href="#">
                                     <i class="fa-solid fa-chevrons-right"></i>
-                                    Store List
+                                    Tiendas
                                 </a>
                             </li>
                             <li>
-                                <a href="contact.html">
+                                <a href="#">
                                     <i class="fa-solid fa-chevrons-right"></i>
-                                    Opening Hours
+                                    Horario de apertura
                                 </a>
                             </li>
                             <li>
-                                <a href="contact.html">
+                                <a href="#">
                                     <i class="fa-solid fa-chevrons-right"></i>
-                                    Contact Us
+                                    Contáctanos
                                 </a>
                             </li>
                             <li>
-                                <a href="contact.html">
+                                <a href="#">
                                     <i class="fa-solid fa-chevrons-right"></i>
-                                    Return Policy
+                                    Devoluciones
                                 </a>
                             </li>
                         </ul>
@@ -110,31 +110,31 @@
                 <div class="col-xl-3 col-lg-4 col-md-6 ps-lg-5 wow fadeInUp" data-wow-delay=".6s">
                     <div class="single-footer-widget">
                         <div class="widget-head">
-                            <h3>Categories</h3>
+                            <h3>Categorías</h3>
                         </div>
                         <ul class="list-area">
                             <li>
-                                <a href="shop.html">
+                                <a href="#">
                                     <i class="fa-solid fa-chevrons-right"></i>
-                                    Novel Books
+                                    Artículos
                                 </a>
                             </li>
                             <li>
-                                <a href="shop.html">
+                                <a href="#">
                                     <i class="fa-solid fa-chevrons-right"></i>
-                                    Poetry Books
+                                    Artículos
                                 </a>
                             </li>
                             <li>
-                                <a href="contact.html">
+                                <a href="#">
                                     <i class="fa-solid fa-chevrons-right"></i>
-                                    Political Books
+                                    Artículos
                                 </a>
                             </li>
                             <li>
-                                <a href="contact.html">
+                                <a href="#">
                                     <i class="fa-solid fa-chevrons-right"></i>
-                                    History Books
+                                    Artículos
                                 </a>
                             </li>
                         </ul>
@@ -143,10 +143,10 @@
                 <div class="col-xl-3 col-lg-4 col-md-6 wow fadeInUp" data-wow-delay=".8s">
                     <div class="single-footer-widget">
                         <div class="widget-head">
-                            <h3>Newsletter</h3>
+                            <h3>Boletín</h3>
                         </div>
                         <div class="footer-content">
-                            <p>Sign up to searing weekly newsletter to get the latest updates.</p>
+                            <p>Regístrate en nuestro boletín semanal y mantente al día con las últimas actualizaciones.</p>
                             <div class="footer-input">
                                 <input type="email" id="email2" placeholder="Enter Email Address">
                                 <button class="newsletter-btn" type="submit">
@@ -163,27 +163,27 @@
         <div class="container">
             <div class="footer-wrapper d-flex align-items-center justify-content-between">
                 <p class="wow fadeInLeft" data-wow-delay=".3s">
-                    © All Copyright 2024 by <a href="index.html">Bookle</a>
+                    © 2026. Todos los derechos reservados. <a href="#">CERAMAMAGICA</a>
                 </p>
                 <ul class="brand-logo wow fadeInRight" data-wow-delay=".5s">
                     <li>
-                        <a href="contact.html">
-                            <img src="assets/img/visa-logo.png" alt="img">
+                        <a href="#">
+                            <img src="{{ asset('images/front_images/visa-logo.png') }}" alt="img">
                         </a>
                     </li>
                     <li>
-                        <a href="contact.html">
-                            <img src="assets/img/mastercard.png" alt="img">
+                        <a href="#">
+                            <img src="{{ asset('images/front_images/mastercard.png') }}" alt="img">
                         </a>
                     </li>
                     <li>
-                        <a href="contact.html">
-                            <img src="assets/img/payoneer.png" alt="img">
+                        <a href="#">
+                            <img src="{{ asset('images/front_images/payoneer.png') }}" alt="img">
                         </a>
                     </li>
                     <li>
-                        <a href="contact.html">
-                            <img src="assets/img/affirm.png" alt="img">
+                        <a href="#">
+                            <img src="{{ asset('images/front_images/affirm.png') }}" alt="img">
                         </a>
                     </li>
                 </ul>

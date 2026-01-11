@@ -5,7 +5,7 @@
                 <div class="offcanvas__top mb-5 d-flex justify-content-between align-items-center">
                     <div class="offcanvas__logo">
                         <a href="index.html">
-                            <img src="assets/img/logo/black-logo.svg" alt="logo-img">
+                            <img src="{{ asset('images/front_images/logo/black-logo.svg') }}" alt="logo-img">
                         </a>
                     </div>
                     <div class="offcanvas__close">
@@ -27,7 +27,7 @@
                                 <i class="fal fa-map-marker-alt"></i>
                             </div>
                             <div class="offcanvas__contact-text">
-                                <a target="_blank" href="index.html">Main Street, Melbourne, Australia</a>
+                                <a target="_blank" href="index.html">General Breton, España</a>
                             </div>
                         </li>
                         <li class="d-flex align-items-center">
@@ -44,7 +44,7 @@
                                 <i class="fal fa-clock"></i>
                             </div>
                             <div class="offcanvas__contact-text">
-                                <a target="_blank" href="index.html">Mod-friday, 09am -05pm</a>
+                                <a target="_blank" href="index.html">Lunes–Viernes, 09am -05pm</a>
                             </div>
                         </li>
                         <li class="d-flex align-items-center">
@@ -52,13 +52,13 @@
                                 <i class="far fa-phone"></i>
                             </div>
                             <div class="offcanvas__contact-text">
-                                <a href="tel:+11002345909">+11002345909</a>
+                                <a href="tel:+11002345909">+34002345909</a>
                             </div>
                         </li>
                     </ul>
                     <div class="header-button mt-4">
                         <a href="contact.html" class="theme-btn text-center">
-                            Get A Quote <i class="fa-solid fa-arrow-right-long"></i>
+                            Solicitar presupuesto <i class="fa-solid fa-arrow-right-long"></i>
                         </a>
                     </div>
                     <div class="social-icon d-flex align-items-center">
