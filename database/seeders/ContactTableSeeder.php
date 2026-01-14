@@ -1,0 +1,22 @@
+<?php
+
+namespace Database\Seeders;
+
+use App\Models\Contact;
+use Illuminate\Database\Seeder;
+
+class ContactTableSeeder extends Seeder
+{
+    /**
+     * Run the database seeds.
+     *
+     * @return void
+     */
+    public function run()
+    {
+        $contactRecords = [
+            ['id'=>1, 'mobile'=>'+34123456789', 'email'=>'test@test.com', 'work'=>'Sunday-Fri 9aM-6pM', 'status'=>1],
+        ];
+        Contact::insert($contactRecords);
+    }
+}
