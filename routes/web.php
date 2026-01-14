@@ -84,7 +84,7 @@ Route::prefix('/admin')->namespace('Admin')->group(function() {
         // Contact
         Route::get('contact', [ContactController::class, 'contact']);
         Route::post('update-contact-status', [ContactController::class, 'updateContactStatus']);
-//        Route::match(['get', 'post'], 'add-edit-brand/{id?}', [BrandController::class, 'addEditBrand']);
+        Route::match(['get', 'post'], 'add-edit-contact/{id?}', [ContactController::class, 'addEditContact']);
         Route::get('delete-contact/{id}', [ContactController::class, 'deleteContact']);
     });
 });

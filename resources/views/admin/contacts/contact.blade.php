@@ -31,7 +31,7 @@
                         <div class="card">
                             <div class="card-header">
                                 <h3 class="card-title">Контакты</h3>
-                                <a href="{{ url('admin/add-edit-brand') }}" style="max-width: 150px; float: right; display: inline-block;" class="btn btn-block btn-success">Добавить</a>
+                                <a href="{{ url('admin/add-edit-contact') }}" style="max-width: 150px; float: right; display: inline-block;" class="btn btn-block btn-success">Добавить</a>
                             </div>
                             <div class="card-body">
                                 <table id="contact" class="table table-bordered table-striped">
