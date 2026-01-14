@@ -58,6 +58,26 @@ $(document).ready(function() {
         });
     });
 
+    // Update Contact Status
+    $(".updateContactStatus").click(function() {
+        let status = $(this).children("i").attr("status");
+        let contact_id = $(this).attr("contact_id");
+        $.ajax({
+            type: 'post',
+            url: '/admin/update-contact-status',
+            data: {status:status,contact_id:contact_id},
+            success: function(resp) {
+                if(resp['status']==0) {
+                    $('#contact-'+contact_id).html('<i class="fas fa-toggle-off" aria-hidden="true" status="Неактивный"></i>');
+                }else if(resp['status']==1) {
+                    $('#contact-'+contact_id).html('<i class="fas fa-toggle-on" aria-hidden="true" status="Активный"></i>');
+                }
+            },error: function() {
+                alert('Произошла ошибка!');
+            }
+        });
+    });
+
     $(".updateCategoryStatus").click(function() {
         let status = $(this).text();
         let category_id = $(this).attr("category_id");

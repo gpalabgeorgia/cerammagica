@@ -83,9 +83,12 @@ Route::prefix('/admin')->namespace('Admin')->group(function() {
 
         // Contact
         Route::get('contact', [ContactController::class, 'contact']);
+        Route::post('update-contact-status', [ContactController::class, 'updateContactStatus']);
+//        Route::match(['get', 'post'], 'add-edit-brand/{id?}', [BrandController::class, 'addEditBrand']);
+////        Route::get('delete-brand/{id}', [BrandController::class, 'deleteBrand']);
     });
 });
 
-Route::namespace('Front')->group(function() {
+Route::namespace('Front')->group(function () {
     Route::get('/', [IndexController::class, 'index']);
 });

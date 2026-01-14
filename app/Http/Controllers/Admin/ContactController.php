@@ -14,4 +14,16 @@ class ContactController extends Controller
         $contacts = Contact::get();
         return view('admin.contacts.contact')->with(compact('contacts'));
     }
+    public function updateContactStatus(Request $request) {
+        if($request->ajax()) {
+            $data = $request->all();
+            if($data['status']=='Активный') {
+                $status = 0;
+            }else {
+                $status = 1;
+            }
+            Contact::where('id', $data['contact_id'])->update(['status'=>$status]);
+            return response()->json(['status'=>$status, 'contact_id'=>$data['contact_id']]);
+        }
+    }
 }
