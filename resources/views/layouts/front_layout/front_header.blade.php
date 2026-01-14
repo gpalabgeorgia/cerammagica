@@ -1,24 +1,28 @@
 <?php
     use App\Models\Section;
+    use App\Models\Contact;
     $sections = Section::sections();
+    $contacts = Contact::contacts();
 //    echo "<pre>"; print_r($sections); die;
 ?>
 <div class="header-top-1">
     <div class="container">
         <div class="header-top-wrapper">
             <ul class="contact-list">
+                @foreach($contacts as $contact)
                 <li>
                     <i class="fas fa-phone"></i>
-                    <a href="tel:+20866660112">+208-6666-0112</a>
+                    <a href="#">{{ $contact->mobile }}</a>
                 </li>
                 <li>
                     <i class="far fa-envelope"></i>
-                    <a href="mailto:info@example.com">info@example.com</a>
+                    <a href="#">{{ $contact->email }}</a>
                 </li>
                 <li>
                     <i class="far fa-clock"></i>
-                    <span>Sunday - Fri: 9 aM - 6 pM</span>
+                    <span>{{ $contact->work }}</span>
                 </li>
+                @endforeach
             </ul>
             <ul class="list">
                 <li><i class="fas fa-user"></i>
@@ -40,7 +44,7 @@
                         <div class="header-left">
                             <div class="logo">
                                 <a href="#" class="header-logo">
-                                    <img src="{{ asset('images/front_images/logo/white-logo.svg') }}" alt="logo-img">
+{{--                                    <img src="{{ asset('images/front_images/logo/white-logo.svg') }}" alt="logo-img">--}}
                                 </a>
                             </div>
                             <div class="mean__menu-wrapper">
