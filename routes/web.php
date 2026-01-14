@@ -3,6 +3,7 @@
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\BrandController;
 use App\Http\Controllers\Admin\CategoryController;
+use App\Http\Controllers\Admin\ContactController;
 use App\Http\Controllers\Admin\ProductsController;
 use App\Http\Controllers\Admin\SectionController;
 // Front Controllers
@@ -79,6 +80,9 @@ Route::prefix('/admin')->namespace('Admin')->group(function() {
         Route::match(['get', 'post'], 'add-images/{id}', [ProductsController::class, 'addImages']);
         Route::post('update-image-status', [ProductsController::class, 'updateImageStatus']);
         Route::get('delete-image/{id}', [ProductsController::class, 'deleteImage']);
+
+        // Contact
+        Route::get('contact', [ContactController::class, 'contact']);
     });
 });
 
