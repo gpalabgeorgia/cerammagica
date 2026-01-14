@@ -26,4 +26,11 @@ class ContactController extends Controller
             return response()->json(['status'=>$status, 'contact_id'=>$data['contact_id']]);
         }
     }
+
+    public function deleteContact($id) {
+        Contact::where('id', $id)->delete();
+        $message = 'Контакт удалился!';
+        session::flash('success_message', $message);
+        return redirect()->back();
+    }
 }

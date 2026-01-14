@@ -41,7 +41,6 @@ class BrandController extends Controller
         }
         if($request->isMethod('post')) {
             $data = $request->all();
-//            echo "<pre>"; print_r($data); die;
 
             // Brand Validations
             $rules = [
