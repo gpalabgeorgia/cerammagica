@@ -14,11 +14,6 @@
                             <input class="inputField" type="email" name="email" placeholder="Email Address">
                             <input class="inputField" type="password" name="password" placeholder="Enter Password">
                             <div class="input-check remember-me">
-                                <div class="checkbox-wrapper">
-                                    <input type="checkbox" class="form-check-input" name="save-for-next"
-                                           id="saveForNext">
-                                    <label for="saveForNext">Remember me</label>
-                                </div>
                                 <div class="text"> <a href="index-2.html">Forgot Your password?</a> </div>
                             </div>
                             <div class="loginBtn">
@@ -28,12 +23,6 @@
                                 Or
                             </div>
                             <button type="button" class="theme-btn rounded-1 loginBtn" data-bs-toggle="modal" data-bs-target="#registrationModal">Sign Up</button>
-                            <div class="form-check-3 d-flex align-items-center from-customradio-2 mt-3">
-                                <input class="form-check-input" type="radio" name="flexRadioDefault">
-                                <label class="form-check-label">
-                                    I Accept Your Terms & Conditions
-                                </label>
-                            </div>
                         </div>
 
                         <div class="banner">
@@ -51,7 +40,6 @@
             </div>
         </div>
     </div>
-
     <!-- Registration Modal -->
     <div class="modal fade" id="registrationModal" tabindex="-1" aria-labelledby="registrationModalLabel"
          aria-hidden="true">
@@ -70,11 +58,6 @@
                             <input class="inputField" type="password" name="password"
                                    placeholder="Enter Confirm Password">
                             <div class="input-check remember-me">
-                                <div class="checkbox-wrapper">
-                                    <input type="checkbox" class="form-check-input" name="save-for-next"
-                                           id="rememberMe">
-                                    <label for="rememberMe">Remember me</label>
-                                </div>
                                 <div class="text"> <a href="index-2.html">Forgot Your password?</a> </div>
                             </div>
                             <div class="loginBtn">
@@ -110,12 +93,6 @@
             <div class="row">
                 <div class="col-12 col-xl-8 col-lg-6">
                     <div class="hero-items">
-                        <div class="bg-shape1">
-                            <img src="{{ asset('images/front_images/hero/bg-shape.png') }}" alt="img">
-                        </div>
-                        <div class="bg-shape2">
-                            <img src="{{ asset('images/front_images/hero/bg-shape2.png') }}" alt="shape-img">
-                        </div>
                         <div class="hero-content">
                             <h1 class="wow fadeInUp" data-wow-delay=".5s">Nombre y apellido del autor</h1>
                             <div class="form-clt wow fadeInUp" data-wow-delay=".9s">
@@ -135,44 +112,40 @@
         </div>
     </div>
 
-    <!-- Feature Section start  -->
-    <section class="feature-section fix section-padding">
+    <section class="book-banner-section fix section-padding">
         <div class="container">
-            <div class="feature-wrapper">
-                <div class="feature-box-items wow fadeInUp" data-wow-delay=".2s">
-                    <div class="icon">
-                        <i class="icon-icon-1"></i>
-                    </div>
-                    <div class="content">
-                        <h3>Return & refund</h3>
-                        <p>Money back guarantee</p>
-                    </div>
-                </div>
-                <div class="feature-box-items wow fadeInUp" data-wow-delay=".4s">
-                    <div class="icon">
-                        <i class="icon-icon-2"></i>
-                    </div>
-                    <div class="content">
-                        <h3>Secure Payment</h3>
-                        <p>30% off by subscribing</p>
+            <div class="row g-4">
+                <div class="col-xl-4 col-lg-6 col-md-6 wow fadeInUp" data-wow-delay=".3s" style="visibility: visible; animation-delay: 0.3s; animation-name: fadeInUp;">
+                    <div class="banner-book-card-items bg-cover" style="background-image: url('{{ asset('images/front_images/banner/book-banner-1.jpg') }}');">
+                        <div class="book-shape">
+                            <img src="{{ asset('images/front_images/banner/book-1.png') }}" alt="img">
+                        </div>
+                        <div class="banner-book-content">
+                            <h2>Mis trabajos</h2>
+                            <a href="shop-details.html" class="theme-btn white-bg">Ver detalles <i class="fa-solid fa-arrow-right-long"></i></a>
+                        </div>
                     </div>
                 </div>
-                <div class="feature-box-items wow fadeInUp" data-wow-delay=".6s">
-                    <div class="icon">
-                        <i class="icon-icon-3"></i>
-                    </div>
-                    <div class="content">
-                        <h3>Quality Support</h3>
-                        <p>Always online 24/7</p>
+                <div class="col-xl-4 col-lg-6 col-md-6 wow fadeInUp" data-wow-delay=".5s" style="visibility: visible; animation-delay: 0.5s; animation-name: fadeInUp;">
+                    <div class="banner-book-card-items bg-cover" style="background-image: url('{{ asset('images/front_images/banner/book-banner-2.jpg') }}');">
+                        <div class="book-shape">
+                            <img src="{{ asset('images/front_images/banner/book-2.png') }}" alt="img">
+                        </div>
+                        <div class="banner-book-content">
+                            <h2>Escuela</h2>
+                            <a href="shop-details.html" class="theme-btn white-bg">Ver detalles <i class="fa-solid fa-arrow-right-long"></i></a>
+                        </div>
                     </div>
                 </div>
-                <div class="feature-box-items wow fadeInUp" data-wow-delay=".8s">
-                    <div class="icon">
-                        <i class="icon-icon-4"></i>
-                    </div>
-                    <div class="content">
-                        <h3>Daily Offers</h3>
-                        <p>20% off by subscribing</p>
+                <div class="col-xl-4 col-lg-6 col-md-6 wow fadeInUp" data-wow-delay=".7s" style="visibility: visible; animation-delay: 0.7s; animation-name: fadeInUp;">
+                    <div class="banner-book-card-items bg-cover" style="background-image: url('{{ asset('images/front_images/banner/book-banner-3.jpg') }}');">
+                        <div class="book-shape">
+                            <img src="{{ asset('images/front_images/banner/book-3.png') }}" alt="img">
+                        </div>
+                        <div class="banner-book-content">
+                            <h2> Tienda </h2>
+                            <a href="shop.html" class="theme-btn white-bg">Ver detalles <i class="fa-solid fa-arrow-right-long"></i></a>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -281,6 +254,117 @@
         </div>
     </section>
 
+    <!-- Gallery -->
+    <section class="featured-books-section pt-100 pb-145 fix section-bg">
+        <div class="container">
+            <div class="section-title-area justify-content-center">
+                <div class="section-title wow fadeInUp" data-wow-delay=".3s" style="visibility: visible; animation-delay: 0.3s; animation-name: fadeInUp;">
+                    <h2>Piezas únicas</h2>
+                </div>
+            </div>
+
+            <div class="swiper featured-books-slider swiper-initialized swiper-horizontal swiper-pointer-events swiper-backface-hidden">
+                <div class="swiper-wrapper" id="swiper-wrapper-e546d0a7ccfcc58a" aria-live="off" style="transition-duration: 2000ms; transform: translate3d(-3438px, 0px, 0px);">
+                    <div class="swiper-slide" data-swiper-slide-index="0" role="group" aria-label="1 / 5" style="width: 1116px; margin-right: 30px;">
+                        <div class="shop-box-items style-4 wow fadeInUp" data-wow-delay=".2s" style="visibility: visible; animation-delay: 0.2s; animation-name: fadeInUp;">
+                            <div class="book-thumb center">
+                                <a href="shop-details"><img src="{{ asset('images/front_images/book/07.png') }}" alt="img"></a>
+                            </div>
+                            <div class="shop-content">
+                                <h3><a href="shop-details.html">Nombre del producto</a></h3>
+                                <ul class="author-post">
+                                    <li class="authot-list">
+                                        <span class="thumb">
+                                            <img src="{{ asset('images/front_images/testimonial/client-1.png') }}" alt="img">
+                                        </span>
+                                        <span class="content">Nombre / Apellido del autor</span>
+                                    </li>
+                                </ul>
+                                <div class="book-availablity"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="swiper-slide swiper-slide-prev" data-swiper-slide-index="1" role="group" aria-label="2 / 5" style="width: 1116px; margin-right: 30px;">
+                        <div class="shop-box-items style-4 wow fadeInUp" data-wow-delay=".2s" style="visibility: visible; animation-delay: 0.2s; animation-name: fadeInUp;">
+                            <div class="book-thumb center">
+                                <a href="shop-details"><img src="{{ asset('images/front_images/book/11.png') }}" alt="img"></a>
+                            </div>
+                            <div class="shop-content">
+                                <h3><a href="shop-details.html">Nombre del producto</a></h3>
+                                <ul class="author-post">
+                                    <li class="authot-list">
+                                        <span class="thumb">
+                                            <img src="{{ asset('images/front_images/testimonial/client-2.png') }}" alt="img">
+                                        </span>
+                                        <span class="content">Nombre / Apellido del autor</span>
+                                    </li>
+                                </ul>
+                                <div class="book-availablity"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="swiper-slide swiper-slide-prev" data-swiper-slide-index="1" role="group" aria-label="2 / 5" style="width: 1116px; margin-right: 30px;">
+                        <div class="shop-box-items style-4 wow fadeInUp" data-wow-delay=".2s" style="visibility: visible; animation-delay: 0.2s; animation-name: fadeInUp;">
+                            <div class="book-thumb center">
+                                <a href="shop-details"><img src="{{ asset('images/front_images/book/11.png') }}" alt="img"></a>
+                            </div>
+                            <div class="shop-content">
+                                <h3><a href="shop-details.html">Nombre del producto</a></h3>
+                                <ul class="author-post">
+                                    <li class="authot-list">
+                                        <span class="thumb">
+                                            <img src="{{ asset('images/front_images/testimonial/client-2.png') }}" alt="img">
+                                        </span>
+                                        <span class="content">Nombre / Apellido del autor</span>
+                                    </li>
+                                </ul>
+                                <div class="book-availablity"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="swiper-slide swiper-slide-prev" data-swiper-slide-index="1" role="group" aria-label="2 / 5" style="width: 1116px; margin-right: 30px;">
+                        <div class="shop-box-items style-4 wow fadeInUp" data-wow-delay=".2s" style="visibility: visible; animation-delay: 0.2s; animation-name: fadeInUp;">
+                            <div class="book-thumb center">
+                                <a href="shop-details"><img src="{{ asset('images/front_images/book/11.png') }}" alt="img"></a>
+                            </div>
+                            <div class="shop-content">
+                                <h3><a href="shop-details.html">Nombre del producto</a></h3>
+                                <ul class="author-post">
+                                    <li class="authot-list">
+                                        <span class="thumb">
+                                            <img src="{{ asset('images/front_images/testimonial/client-2.png') }}" alt="img">
+                                        </span>
+                                        <span class="content">Nombre / Apellido del autor</span>
+                                    </li>
+                                </ul>
+                                <div class="book-availablity"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="swiper-slide swiper-slide-prev" data-swiper-slide-index="1" role="group" aria-label="2 / 5" style="width: 1116px; margin-right: 30px;">
+                        <div class="shop-box-items style-4 wow fadeInUp" data-wow-delay=".2s" style="visibility: visible; animation-delay: 0.2s; animation-name: fadeInUp;">
+                            <div class="book-thumb center">
+                                <a href="shop-details"><img src="{{ asset('images/front_images/book/11.png') }}" alt="img"></a>
+                            </div>
+                            <div class="shop-content">
+                                <h3><a href="shop-details.html">Nombre del producto</a></h3>
+                                <ul class="author-post">
+                                    <li class="authot-list">
+                                        <span class="thumb">
+                                            <img src="{{ asset('images/front_images/testimonial/client-2.png') }}" alt="img">
+                                        </span>
+                                        <span class="content">Nombre / Apellido del autor</span>
+                                    </li>
+                                </ul>
+                                <div class="book-availablity"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-pagination swiper-pagination-clickable swiper-pagination-bullets swiper-pagination-horizontal"><span class="swiper-pagination-bullet" tabindex="0" role="button" aria-label="Go to slide 1"></span><span class="swiper-pagination-bullet" tabindex="0" role="button" aria-label="Go to slide 2"></span><span class="swiper-pagination-bullet swiper-pagination-bullet-active" tabindex="0" role="button" aria-label="Go to slide 3" aria-current="true"></span><span class="swiper-pagination-bullet" tabindex="0" role="button" aria-label="Go to slide 4"></span><span class="swiper-pagination-bullet" tabindex="0" role="button" aria-label="Go to slide 5"></span></div>
+                <span class="swiper-notification" aria-live="assertive" aria-atomic="true"></span></div>
+        </div>
+    </section>
     <!-- Book Catagories Section start  -->
     <section class="book-catagories-section fix section-padding">
         <div class="container">
@@ -359,9 +443,6 @@
             </div>
         </div>
     </section>
-
-
-
 
     <!-- Top Ratting Book Section start  -->
     <section class="top-ratting-book-section fix section-padding section-bg">
