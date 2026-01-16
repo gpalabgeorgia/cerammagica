@@ -1,3 +1,7 @@
+<?php
+use App\Models\Contact;
+$contacts = Contact::contacts();
+?>
 <div class="fix-area">
     <div class="offcanvas__info">
         <div class="offcanvas__wrapper">
@@ -22,39 +26,32 @@
                 <div class="offcanvas__contact">
                     <h4>Contact Info</h4>
                     <ul>
-                        <li class="d-flex align-items-center">
-                            <div class="offcanvas__contact-icon">
-                                <i class="fal fa-map-marker-alt"></i>
-                            </div>
-                            <div class="offcanvas__contact-text">
-                                <a target="_blank" href="index.html">General Breton, España</a>
-                            </div>
-                        </li>
-                        <li class="d-flex align-items-center">
-                            <div class="offcanvas__contact-icon mr-15">
-                                <i class="fal fa-envelope"></i>
-                            </div>
-                            <div class="offcanvas__contact-text">
-                                <a href="mailto:info@example.com"><span
-                                        class="mailto:info@example.com">info@example.com</span></a>
-                            </div>
-                        </li>
-                        <li class="d-flex align-items-center">
-                            <div class="offcanvas__contact-icon mr-15">
-                                <i class="fal fa-clock"></i>
-                            </div>
-                            <div class="offcanvas__contact-text">
-                                <a target="_blank" href="index.html">Lunes–Viernes, 09am -05pm</a>
-                            </div>
-                        </li>
-                        <li class="d-flex align-items-center">
-                            <div class="offcanvas__contact-icon mr-15">
-                                <i class="far fa-phone"></i>
-                            </div>
-                            <div class="offcanvas__contact-text">
-                                <a href="tel:+11002345909">+34002345909</a>
-                            </div>
-                        </li>
+                        @foreach($contacts as $contact)
+                            <li class="d-flex align-items-center">
+                                <div class="offcanvas__contact-icon mr-15">
+                                    <i class="fa-solid fa-envelope"></i>
+                                </div>
+                                <div class="offcanvas__contact-text">
+                                    <a href="mailto:info@example.com"><span class="mailto:info@example.com">{{ $contact->email }}</span></a>
+                                </div>
+                            </li>
+                            <li class="d-flex align-items-center">
+                                <div class="offcanvas__contact-icon mr-15">
+                                    <i class="fa-regular fa-clock"></i>
+                                </div>
+                                <div class="offcanvas__contact-text">
+                                    <a target="_blank" href="index.html">{{ $contact->work }}</a>
+                                </div>
+                            </li>
+                            <li class="d-flex align-items-center">
+                                <div class="offcanvas__contact-icon mr-15">
+                                    <i class="fa-solid fa-phone"></i>
+                                </div>
+                                <div class="offcanvas__contact-text">
+                                    <a href="tel:+11002345909">{{ $contact->mobile }}</a>
+                                </div>
+                            </li>
+                        @endforeach
                     </ul>
                     <div class="header-button mt-4">
                         <a href="contact.html" class="theme-btn text-center">

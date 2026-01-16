@@ -3,7 +3,6 @@
     use App\Models\Contact;
     $sections = Section::sections();
     $contacts = Contact::contacts();
-//    echo "<pre>"; print_r($sections); die;
 ?>
 <div class="header-top-1">
     <div class="container">
