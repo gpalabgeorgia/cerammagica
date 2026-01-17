@@ -4778,9 +4778,6 @@ span {
 .shop-box-items {
     margin-top: 40px;
 }
-.shop-box-items .star i {
-    color: var(--theme2);
-}
 .shop-box-items .shop-button {
     margin-top: 30px;
 }

@@ -90,6 +90,12 @@
                                         <label class="product_color">Цвет Продукта</label>
                                         <input type="text" class="form-control" id="product_color" name="product_color" placeholder="Введите Цвет продукта" @if(!empty($productdata['product_color'])) value="{{ $productdata['product_color'] }}" @else value="{{ old('product_color') }}" @endif>
                                     </div>
+                                    <div class="form-group">
+                                        <label class="product_name">Описание продукта</label>
+                                        <textarea name="description" id="description" rows="3" class="form-control" placeholder="Описание продукта">
+                                        @if(!empty($productdata['description'])) {{ $productdata['description'] }} @else {{ old('description') }} @endif
+                                    </textarea>
+                                    </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
@@ -102,10 +108,6 @@
                                     </div>
                                 </div>
                                 <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label class="product_weight">Вес Продукта</label>
-                                        <input type="text" class="form-control" id="product_weight" name="product_weight" placeholder="Введите вес продукта" @if(!empty($productdata['product_weight'])) value="{{ $productdata['product_weight'] }}" @else value="{{ old('product_weight') }}" @endif>
-                                    </div>
                                     <div class="form-group">
                                         <label for="main_image">Фото Продукта</label>
                                         <div class="input-group">
@@ -130,110 +132,6 @@
                             </div>
                             <div class="row">
                                 <div class="col-12 col-sm-6">
-                                    <div class="form-group">
-                                        <label for="product_video">Видео Продукта</label>
-                                        <div class="input-group">
-                                            <div class="custom-file">
-                                                <input type="file" class="custom-file-input" id="product_video" name="product_video">
-                                                <label class="custom-file-label" for="product_video">Выберите файл</label>
-                                            </div>
-                                            <div class="input-group-append">
-                                                <span class="input-group-text">Загрузить</span>
-                                            </div>
-                                        </div>
-                                        @if($productdata['product_video'])
-                                            <div>
-                                                <a href="{{ url('videos/product_videos/'.$productdata['product_video']) }}" download="">Скачать</a>
-                                                &nbsp;|&nbsp;
-                                                <a class="confirmDelete" href="javascript:void(0)" record="product-video" recordid="{{ $productdata['id'] }}">Удалить Видео</a>
-                                            </div>
-                                        @endif
-                                    </div>
-                                    <div class="form-group">
-                                        <label class="product_name">Описание продукта</label>
-                                        <textarea name="description" id="description" rows="3" class="form-control" placeholder="Описание продукта">
-                                        @if(!empty($productdata['description'])) {{ $productdata['description'] }} @else {{ old('description') }} @endif
-                                    </textarea>
-                                    </div>
-                                </div>
-                                <div class="col-12 col-sm-6">
-                                    <div class="form-group">
-                                        <label class="wash_care">Уход за продуктом</label>
-                                        <textarea name="wash_care" id="wash_care" rows="3" class="form-control" placeholder="Уход за продуктом">
-                                        @if(!empty($productdata['wash_care'])) {{ $productdata['wash_care'] }} @else {{ old('wash_care') }} @endif
-                                    </textarea>
-                                    </div>
-                                    <div class="form-group">
-                                        <label>Выделить Материал</label>
-                                        <select name="fabric" id="fabric_id" class="form-control select2" style="width: 100%;">
-                                            <option value="">Выделить</option>
-                                            @foreach($fabricArray as $fabric)
-                                                <option value="{{ $fabric }}" @if(!empty($productdata['fabric']) && $productdata['fabric']==$fabric) selected="" @endif>{{ $fabric }}</option>
-                                            @endforeach
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="col-12 col-sm-6">
-                                    <div class="form-group">
-                                        <label>Выделить Рукав</label>
-                                        <select name="sleeve" id="sleeve_id" class="form-control select2" style="width: 100%;">
-                                            <option value="">Выделить</option>
-                                            @foreach($sleeveArray as $sleeve)
-                                                <option value="{{ $sleeve }}" @if(!empty($productdata['sleeve']) && $productdata['sleeve']==$sleeve) selected="" @endif>{{ $sleeve }}</option>
-                                            @endforeach
-                                        </select>
-                                    </div>
-                                    <div class="form-group">
-                                        <label>Выделить Принт</label>
-                                        <select name="pattern" id="pattern_id" class="form-control select2" style="width: 100%;">
-                                            <option value="">Выделить</option>
-                                            @foreach($patternArray as $pattern)
-                                                <option value="{{ $pattern }}" @if(!empty($productdata['pattern']) && $productdata['pattern']==$pattern) selected="" @endif>{{ $pattern }}</option>
-                                            @endforeach
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="col-12 col-sm-6">
-                                    <div class="form-group">
-                                        <label>Выделить Посадку</label>
-                                        <select name="fit" id="fit_id" class="form-control select2" style="width: 100%;">
-                                            <option value="">Выделить</option>
-                                            @foreach($fitArray as $fit)
-                                                <option value="{{ $fit }}" @if(!empty($productdata['fit']) && $productdata['fit']==$fit) selected="" @endif>{{ $fit }}</option>
-                                            @endforeach
-                                        </select>
-                                    </div>
-                                    <div class="form-group">
-                                        <label>Выделить Повод</label>
-                                        <select name="occasion" id="occasion_id" class="form-control select2" style="width: 100%;">
-                                            <option value="">Выделить</option>
-                                            @foreach($occasionArray as $occasion)
-                                                <option value="{{ $occasion }}" @if(!empty($productdata['occasion']) && $productdata['occasion']==$occasion) selected="" @endif>{{ $occasion }}</option>
-                                            @endforeach
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="col-12 col-sm-6">
-                                    <div class="form-group">
-                                        <label class="product_name">Meta Название категории</label>
-                                        <input type="text" class="form-control" id="meta_title" name="meta_title" placeholder="Введите meta название категории" @if(!empty($productdata['meta_title'])) value="{{ $productdata['meta_title'] }}" @else value="{{ old('meta_title') }}" @endif>
-                                    </div>
-                                </div>
-                                <div class="col-12 col-sm-6">
-                                    <div class="form-group">
-                                        <label class="product_name">Meta Описание категории</label>
-                                        <textarea name="meta_description" id="meta_description" rows="3" class="form-control" placeholder="Meta Описание категории">
-                                        @if(!empty($productdata['meta_description'])) {{ $productdata['meta_description'] }} @else {{ old('meta_description') }} @endif
-                                    </textarea>
-                                    </div>
-                                </div>
-                                <div class="col-12 col-sm-6">
-                                    <div class="form-group">
-                                        <label class="product_name">Meta Ключевые слова</label>
-                                        <textarea name="meta_keywords" id="meta_keywords" rows="3" class="form-control" placeholder="Meta Ключевые слова">
-                                        @if(!empty($productdata['meta_keywords'])) {{ $productdata['meta_keywords'] }} @else {{ old('meta_keywords') }} @endif
-                                    </textarea>
-                                    </div>
                                     <div class="form-group">
                                         <label class="product_name">В наличии</label>
                                         <input type="checkbox" name="is_featured" id="is_featured" value="Yes" @if(!empty($productdata['is_featured']) && $productdata['is_featured']=="Yes") checked="" @endif>

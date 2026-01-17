@@ -154,26 +154,32 @@
 
     <!-- Shop Section start  -->
     <section class="shop-section section-padding fix pt-0">
-        <div class="container">
+        <div class="container" style="max-height: 50%">
             <div class="section-title-area">
                 <div class="section-title">
                     <!-- Last Works  -->
-                    <h2 class="wow fadeInUp" data-wow-delay=".3s">Últimos trabajos</h2>
+                    <h2 class="wow fadeInUp" data-wow-delay=".3s">Productos recomendados</h2>
                 </div>
                 <a href="shop.html" class="theme-btn transparent-btn wow fadeInUp" data-wow-delay=".5s">Explorar más <i class="fa-solid fa-arrow-right-long"></i></a>
             </div>
-            <div class="swiper book-slider">
+            <div class="swiper book-slider" style="max-height: 430px">
+                @foreach($featuredItemsChunk as $key => $featuredItem)
                 <div class="swiper-wrapper">
+                    @foreach($featuredItem as $item)
                     <div class="swiper-slide">
                         <div class="shop-box-items style-2">
                             <div class="book-thumb center">
-                                <a href="shop-details"><img src="{{ asset('images/front_images/book/01.png') }}" alt="img"></a>
+                                <a href="shop-details">
+                                    <?php $product_image_path = 'images/product_images/small/'.$item['main_image']; ?>
+                                    @if(!empty($item['main_image']) && file_exists($product_image_path))
+                                    <img src="{{ asset($product_image_path) }}" alt="img">
+                                    @endif
+                                </a>
                             </div>
                             <div class="shop-content">
-                                <h3><a href="shop-details.html">Nombre del producto </a></h3>
+                                <h3><a href="shop-details.html">{{ $item['product_name'] }}</a></h3>
                                 <ul class="price-list">
-                                    <li>$30.00</li>
-                                    <li><del>$39.99</del></li>
+                                    <li>{{ $item['product_price'] }} €</li>
                                 </ul>
                             </div>
                             <div class="shop-button">
@@ -181,75 +187,9 @@
                             </div>
                         </div>
                     </div>
-                    <div class="swiper-slide">
-                        <div class="shop-box-items style-2">
-                            <div class="book-thumb center">
-                                <a href="shop-details"><img src="{{ asset('images/front_images/book/01.png') }}" alt="img"></a>
-                            </div>
-                            <div class="shop-content">
-                                <h3><a href="shop-details.html">Nombre del producto </a></h3>
-                                <ul class="price-list">
-                                    <li>$30.00</li>
-                                    <li><del>$39.99</del></li>
-                                </ul>
-                            </div>
-                            <div class="shop-button">
-                                <a href="shop-details.html" class="theme-btn"><i class="fa-solid fa-basket-shopping"></i> Añadir al carrito</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="swiper-slide">
-                        <div class="shop-box-items style-2">
-                            <div class="book-thumb center">
-                                <a href="shop-details"><img src="{{ asset('images/front_images/book/01.png') }}" alt="img"></a>
-                            </div>
-                            <div class="shop-content">
-                                <h3><a href="shop-details.html">Nombre del producto </a></h3>
-                                <ul class="price-list">
-                                    <li>$30.00</li>
-                                    <li><del>$39.99</del></li>
-                                </ul>
-                            </div>
-                            <div class="shop-button">
-                                <a href="shop-details.html" class="theme-btn"><i class="fa-solid fa-basket-shopping"></i> Añadir al carrito</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="swiper-slide">
-                        <div class="shop-box-items style-2">
-                            <div class="book-thumb center">
-                                <a href="shop-details"><img src="{{ asset('images/front_images/book/01.png') }}" alt="img"></a>
-                            </div>
-                            <div class="shop-content">
-                                <h3><a href="shop-details.html">Nombre del producto </a></h3>
-                                <ul class="price-list">
-                                    <li>$30.00</li>
-                                    <li><del>$39.99</del></li>
-                                </ul>
-                            </div>
-                            <div class="shop-button">
-                                <a href="shop-details.html" class="theme-btn"><i class="fa-solid fa-basket-shopping"></i> Añadir al carrito</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="swiper-slide">
-                        <div class="shop-box-items style-2">
-                            <div class="book-thumb center">
-                                <a href="shop-details"><img src="{{ asset('images/front_images/book/01.png') }}" alt="img"></a>
-                            </div>
-                            <div class="shop-content">
-                                <h3><a href="shop-details.html">Nombre del producto </a></h3>
-                                <ul class="price-list">
-                                    <li>$30.00</li>
-                                    <li><del>$39.99</del></li>
-                                </ul>
-                            </div>
-                            <div class="shop-button">
-                                <a href="shop-details.html" class="theme-btn"><i class="fa-solid fa-basket-shopping"></i> Añadir al carrito</a>
-                            </div>
-                        </div>
-                    </div>
+                    @endforeach
                 </div>
+                @endforeach
             </div>
         </div>
     </section>
