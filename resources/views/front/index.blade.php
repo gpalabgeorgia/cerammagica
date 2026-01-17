@@ -199,107 +199,34 @@
         <div class="container">
             <div class="section-title-area justify-content-center">
                 <div class="section-title wow fadeInUp" data-wow-delay=".3s" style="visibility: visible; animation-delay: 0.3s; animation-name: fadeInUp;">
-                    <h2>Piezas únicas</h2>
+                    <h2>Últimos trabajos</h2>
                 </div>
             </div>
-
             <div class="swiper featured-books-slider swiper-initialized swiper-horizontal swiper-pointer-events swiper-backface-hidden">
                 <div class="swiper-wrapper" id="swiper-wrapper-e546d0a7ccfcc58a" aria-live="off" style="transition-duration: 2000ms; transform: translate3d(-3438px, 0px, 0px);">
+                    @foreach($newProducts as $product)
                     <div class="swiper-slide" data-swiper-slide-index="0" role="group" aria-label="1 / 5" style="width: 1116px; margin-right: 30px;">
                         <div class="shop-box-items style-4 wow fadeInUp" data-wow-delay=".2s" style="visibility: visible; animation-delay: 0.2s; animation-name: fadeInUp;">
                             <div class="book-thumb center">
-                                <a href="shop-details"><img src="{{ asset('images/front_images/book/07.png') }}" alt="img"></a>
+                                <a href="shop-details">
+                                    <?php $product_image_path = 'images/product_images/large/'.$product['main_image']; ?>
+                                    @if(!empty($product['main_image']) && file_exists($product_image_path))
+                                        <img style="width: 1040px;" src="{{ asset($product_image_path) }}" alt="img">
+                                    @endif
+                                </a>
                             </div>
                             <div class="shop-content">
-                                <h3><a href="shop-details.html">Nombre del producto</a></h3>
+                                <h3><a href="shop-details.html">{{ $product['product_name'] }}</a></h3>
                                 <ul class="author-post">
                                     <li class="authot-list">
-                                        <span class="thumb">
-                                            <img src="{{ asset('images/front_images/testimonial/client-1.png') }}" alt="img">
-                                        </span>
-                                        <span class="content">Nombre / Apellido del autor</span>
+                                        <span class="content">{{ $product['description'] }}</span>
                                     </li>
                                 </ul>
                                 <div class="book-availablity"></div>
                             </div>
                         </div>
                     </div>
-                    <div class="swiper-slide swiper-slide-prev" data-swiper-slide-index="1" role="group" aria-label="2 / 5" style="width: 1116px; margin-right: 30px;">
-                        <div class="shop-box-items style-4 wow fadeInUp" data-wow-delay=".2s" style="visibility: visible; animation-delay: 0.2s; animation-name: fadeInUp;">
-                            <div class="book-thumb center">
-                                <a href="shop-details"><img src="{{ asset('images/front_images/book/11.png') }}" alt="img"></a>
-                            </div>
-                            <div class="shop-content">
-                                <h3><a href="shop-details.html">Nombre del producto</a></h3>
-                                <ul class="author-post">
-                                    <li class="authot-list">
-                                        <span class="thumb">
-                                            <img src="{{ asset('images/front_images/testimonial/client-2.png') }}" alt="img">
-                                        </span>
-                                        <span class="content">Nombre / Apellido del autor</span>
-                                    </li>
-                                </ul>
-                                <div class="book-availablity"></div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="swiper-slide swiper-slide-prev" data-swiper-slide-index="1" role="group" aria-label="2 / 5" style="width: 1116px; margin-right: 30px;">
-                        <div class="shop-box-items style-4 wow fadeInUp" data-wow-delay=".2s" style="visibility: visible; animation-delay: 0.2s; animation-name: fadeInUp;">
-                            <div class="book-thumb center">
-                                <a href="shop-details"><img src="{{ asset('images/front_images/book/11.png') }}" alt="img"></a>
-                            </div>
-                            <div class="shop-content">
-                                <h3><a href="shop-details.html">Nombre del producto</a></h3>
-                                <ul class="author-post">
-                                    <li class="authot-list">
-                                        <span class="thumb">
-                                            <img src="{{ asset('images/front_images/testimonial/client-2.png') }}" alt="img">
-                                        </span>
-                                        <span class="content">Nombre / Apellido del autor</span>
-                                    </li>
-                                </ul>
-                                <div class="book-availablity"></div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="swiper-slide swiper-slide-prev" data-swiper-slide-index="1" role="group" aria-label="2 / 5" style="width: 1116px; margin-right: 30px;">
-                        <div class="shop-box-items style-4 wow fadeInUp" data-wow-delay=".2s" style="visibility: visible; animation-delay: 0.2s; animation-name: fadeInUp;">
-                            <div class="book-thumb center">
-                                <a href="shop-details"><img src="{{ asset('images/front_images/book/11.png') }}" alt="img"></a>
-                            </div>
-                            <div class="shop-content">
-                                <h3><a href="shop-details.html">Nombre del producto</a></h3>
-                                <ul class="author-post">
-                                    <li class="authot-list">
-                                        <span class="thumb">
-                                            <img src="{{ asset('images/front_images/testimonial/client-2.png') }}" alt="img">
-                                        </span>
-                                        <span class="content">Nombre / Apellido del autor</span>
-                                    </li>
-                                </ul>
-                                <div class="book-availablity"></div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="swiper-slide swiper-slide-prev" data-swiper-slide-index="1" role="group" aria-label="2 / 5" style="width: 1116px; margin-right: 30px;">
-                        <div class="shop-box-items style-4 wow fadeInUp" data-wow-delay=".2s" style="visibility: visible; animation-delay: 0.2s; animation-name: fadeInUp;">
-                            <div class="book-thumb center">
-                                <a href="shop-details"><img src="{{ asset('images/front_images/book/11.png') }}" alt="img"></a>
-                            </div>
-                            <div class="shop-content">
-                                <h3><a href="shop-details.html">Nombre del producto</a></h3>
-                                <ul class="author-post">
-                                    <li class="authot-list">
-                                        <span class="thumb">
-                                            <img src="{{ asset('images/front_images/testimonial/client-2.png') }}" alt="img">
-                                        </span>
-                                        <span class="content">Nombre / Apellido del autor</span>
-                                    </li>
-                                </ul>
-                                <div class="book-availablity"></div>
-                            </div>
-                        </div>
-                    </div>
+                    @endforeach
                 </div>
                 <div class="swiper-pagination swiper-pagination-clickable swiper-pagination-bullets swiper-pagination-horizontal"><span class="swiper-pagination-bullet" tabindex="0" role="button" aria-label="Go to slide 1"></span><span class="swiper-pagination-bullet" tabindex="0" role="button" aria-label="Go to slide 2"></span><span class="swiper-pagination-bullet swiper-pagination-bullet-active" tabindex="0" role="button" aria-label="Go to slide 3" aria-current="true"></span><span class="swiper-pagination-bullet" tabindex="0" role="button" aria-label="Go to slide 4"></span><span class="swiper-pagination-bullet" tabindex="0" role="button" aria-label="Go to slide 5"></span></div>
                 <span class="swiper-notification" aria-live="assertive" aria-atomic="true"></span></div>
