@@ -48,7 +48,7 @@ class BannerController extends Controller
                     // set paths for small, medium and large images
                     $banner_image_path = 'images/banner_images/'.$imageName;
                     // Upload Banner Image after Resize
-                    Image::make($image_tmp)->resize(589,743)->save($banner_image_path); // W: 1040 H:1200
+                    Image::make($image_tmp)->resize(450,568)->save($banner_image_path); // W: 1040 H:1200
                     // Save Image in products table
                     $banner->image = $imageName;
                 }

@@ -1,3 +1,8 @@
+<?php
+    use App\Models\Banner;
+    $banners = Banner::getBanners();
+//    dd($banners);
+?>
 @extends('layouts.front_layout.front_layout')
 @section('content')
     <!-- Login Modal -->
@@ -81,31 +86,6 @@
                                 <img src="{{ asset('images/front_images/registrationbg.jpg') }}" alt="signUpBg">
                             </div>
                         </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Hero Section start  -->
-    <div class="hero-section hero-1 fix">
-        <div class="container">
-            <div class="row">
-                <div class="col-12 col-xl-8 col-lg-6">
-                    <div class="hero-items">
-                        <div class="hero-content">
-                            <h1 class="wow fadeInUp" data-wow-delay=".5s">Nombre y apellido del autor</h1>
-                            <div class="form-clt wow fadeInUp" data-wow-delay=".9s">
-                                <p>
-                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci, aut eius illum ipsa molestias natus nobis officia perferendis possimus provident quae quam quidem repudiandae sapiente tenetur! Aliquam architecto consectetur dicta expedita illo, iure, iusto laudantium quae repellendus reprehenderit tenetur totam! Amet aut nostrum nulla perferendis rem rerum? Iure, nesciunt, non?
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-12 col-xl-4 col-lg-6">
-                    <div class="girl-image">
-                        <img class=" float-bob-x" src="{{ asset('images/front_images/hero/hero-girl.png') }}" alt="img">
                     </div>
                 </div>
             </div>

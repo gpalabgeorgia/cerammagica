@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="es">
 <!--<< Header Area >>-->
-
 <head>
     <!-- ========== Meta Tags ========== -->
     <meta charset="UTF-8">
@@ -47,6 +46,8 @@
 @include('layouts.front_layout.front_sidebar')
 
 @include('layouts.front_layout.front_header')
+
+@include('front.home_banner')
 
 @yield('content')
 

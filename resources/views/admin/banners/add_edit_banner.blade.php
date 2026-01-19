@@ -79,7 +79,7 @@
                                                 <span class="input-group-text">Загрузить</span>
                                             </div>
                                         </div>
-                                        <div>Рекомендованный размер фото: Width=589px, Height=743px</div>
+                                        <div>Рекомендованный размер фото: Width=450px, Height=568px</div>
                                         @if(!empty($banner['image']))
                                             <div>
                                                 <img style="width: 60px; margin-top: 5px;" src="{{ asset('images/banner_images/'.$banner['image']) }}" alt="">
