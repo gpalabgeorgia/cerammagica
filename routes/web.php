@@ -1,6 +1,7 @@
 <?php
 // Admin Controllers
 use App\Http\Controllers\Admin\AdminController;
+use App\Http\Controllers\Admin\BannerController;
 use App\Http\Controllers\Admin\BrandController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\ContactController;
@@ -86,6 +87,11 @@ Route::prefix('/admin')->namespace('Admin')->group(function() {
         Route::post('update-contact-status', [ContactController::class, 'updateContactStatus']);
         Route::match(['get', 'post'], 'add-edit-contact/{id?}', [ContactController::class, 'addEditContact']);
         Route::get('delete-contact/{id}', [ContactController::class, 'deleteContact']);
+
+        // Banner
+        Route::get('banner', [BannerController::class, 'banner']);
+        Route::post('update-banner-status', [BannerController::class, 'updateBannerStatus']);
+        Route::get('delete-banner/{id}', [BannerController::class, 'deleteBanner']);
     });
 });
 

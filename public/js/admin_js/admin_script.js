@@ -78,6 +78,26 @@ $(document).ready(function() {
         });
     });
 
+    // Update Banner Status
+    $(".updateBannerStatus").click(function() {
+        let status = $(this).children("i").attr("status");
+        let banner_id = $(this).attr("banner_id");
+        $.ajax({
+            type: 'post',
+            url: '/admin/update-banner-status',
+            data: {status:status,banner_id:banner_id},
+            success: function(resp) {
+                if(resp['status']==0) {
+                    $('#banner-'+banner_id).html('<i class="fas fa-toggle-off" aria-hidden="true" status="Неактивный"></i>');
+                }else if(resp['status']==1) {
+                    $('#banner-'+banner_id).html('<i class="fas fa-toggle-on" aria-hidden="true" status="Активный"></i>');
+                }
+            },error: function() {
+                alert('Произошла ошибка!');
+            }
+        });
+    });
+
     $(".updateCategoryStatus").click(function() {
         let status = $(this).text();
         let category_id = $(this).attr("category_id");

@@ -109,6 +109,7 @@
         $("#products").DataTable();
         $("#brands").DataTable();
         $("#contact").DataTable();
+        $("#banner").DataTable();
     });
 </script>
 <script src="{{ url('plugins/select2/js/select2.full.min.js') }}"></script>

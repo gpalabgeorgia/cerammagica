@@ -61,6 +61,7 @@ class BrandController extends Controller
         }
         return view('admin.brands.add_edit_brand')->with(compact('title', 'brand', 'message'));
     }
+
     public function deleteBrand($id) {
         Brand::where('id', $id)->delete();
         $message = 'Бренд удалился!';

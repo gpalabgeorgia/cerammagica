@@ -62,7 +62,7 @@
                     </ul>
                 </li>
 
-                @if(Session::get('page')=='sections' || Session::get('page')=='categories' || Session::get('page')=='products' || Session::get('page')=='brands' || Session::get('page')=='contact')
+                @if(Session::get('page')=='sections' || Session::get('page')=='categories' || Session::get('page')=='products' || Session::get('page')=='brands' || Session::get('page')=='contact' || Session::get('page')=='banner')
                         <?php $active = "active" ?>
                 @else
                         <?php $active = "" ?>
@@ -129,6 +129,17 @@
                             <a href="{{ url('admin/contact') }}" class="nav-link {{ $active }}">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Контакты</p>
+                            </a>
+                        </li>
+                        @if(Session::get('page')=='banner')
+                                <?php $active = "active" ?>
+                        @else
+                                <?php $active = "" ?>
+                        @endif
+                        <li class="nav-item">
+                            <a href="{{ url('admin/banner') }}" class="nav-link {{ $active }}">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Баннеры</p>
                             </a>
                         </li>
                     </ul>
