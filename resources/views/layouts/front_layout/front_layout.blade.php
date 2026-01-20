@@ -47,7 +47,7 @@
 
 @include('layouts.front_layout.front_header')
 
-@include('front.home_banner')
+@include('front.banners.home_banner')
 
 @yield('content')
 

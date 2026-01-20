@@ -9,6 +9,7 @@ use App\Http\Controllers\Admin\ProductsController;
 use App\Http\Controllers\Admin\SectionController;
 // Front Controllers
 use App\Http\Controllers\Front\IndexController;
+use App\Http\Controllers\Front\ProductsController as FrontProductsController;
 // Laravel Support Facades Controllers
 use Illuminate\Support\Facades\Route;
 
@@ -98,4 +99,5 @@ Route::prefix('/admin')->namespace('Admin')->group(function() {
 
 Route::namespace('Front')->group(function () {
     Route::get('/', [IndexController::class, 'index']);
+    Route::get('/{url}', [FrontProductsController::class, 'listing']);
 });
