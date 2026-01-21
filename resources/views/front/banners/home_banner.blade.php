@@ -1,3 +1,8 @@
+<?php
+use App\Models\Banner;
+$banners = Banner::getBanners();
+//    dd($banners);
+?>
 <!-- Hero Section start  -->
 <div class="hero-section hero-1 fix">
     <div class="container">

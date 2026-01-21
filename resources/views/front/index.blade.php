@@ -1,7 +1,6 @@
 <?php
     use App\Models\Banner;
     $banners = Banner::getBanners();
-//    dd($banners);
 ?>
 @extends('layouts.front_layout.front_layout')
 @section('content')

@@ -32,7 +32,6 @@
     <link rel="stylesheet" href="{{ url('css/front_css/main.css') }}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css">
 </head>
-
 <body>
 <!-- Cursor follower -->
 <div class="cursor-follower"></div>
@@ -79,5 +78,4 @@
 <!--<< Main.js >>-->
 <script src="{{ url('js/front_js/main.js') }}"></script>
 </body>
-
 </html>
