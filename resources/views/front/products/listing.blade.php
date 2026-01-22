@@ -59,7 +59,7 @@
                     <ul class="breadcrumb-items wow fadeInUp" data-wow-delay=".3s">
                         <li><a href="{{ url('/') }}">Inicio</a></li>
                         <li><i class="fa-solid fa-chevron-right"></i></li>
-                        <li class="active">{{ $categoryDetails['catDetails']['category_name'] }}</li>
+                        <li class="active"><?php echo $categoryDetails['breadcrumbs']; ?></li>
                     </ul>
                 </div>
             </div>
@@ -81,7 +81,7 @@
                                     <div class="input-area search-container">
                                         <input class="search-input" type="text" placeholder="Search here">
                                         <button class="cmn-btn search-icon">
-                                            <i class="far fa-search"></i>
+                                            <i class="fas fa-search"></i>
                                         </button>
                                     </div>
                                 </form>
@@ -155,8 +155,9 @@
                                                 <ul class="price-list">
                                                     <li>{{ $product['product_price'] }} €.</li>
                                                 </ul>
+                                                <h3>{{ $product['brand']['name'] }}</h3>
                                                 <div class="shop-button">
-                                                    <a href="shop-details.html" class="theme-btn"><i class="fa-solid fa-basket-shopping"></i> Add To Cart</a>
+                                                    <a href="shop-details.html" class="theme-btn"><i class="fa-solid fa-basket-shopping"></i>Add</a>
                                                 </div>
                                             </div>
                                         </div>
